@@ -4,7 +4,9 @@ ik-analyzer for solr7.x
 适配最新版solr7，并添加动态加载字典表功能；
 在不需要重启solr服务的情况下加载新增的字典。
 
-使用说明：
+<hr>
+使用说明：<br>
+
 1-将jar包放入solr服务的jetty或tomcat的webapp/WEB-INF/lib/目录下；
 
 2-将resources目录下的5个配置文件(IKAnalyzer.cfg.xml; ext.dic; stopword.dic; ik.conf; dynamicdic.txt)放入solr服务的jetty或tomcat的webapp/WEB-INF/classes/目录下；
