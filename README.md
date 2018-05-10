@@ -24,14 +24,14 @@ ik-analyzer for solr7.x
 <pre>
 &lt;!-- ik分词器 --&gt;
 &lt;fieldType name="text_ik" class="solr.TextField"&gt;
-    &lt;analyzer type="index"&gt;
-        &lt;tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" isMaxWordLength="false" useSmart="false" conf="ik.conf"/&gt;
-        &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
-    &lt;/analyzer&gt;
-    &lt;analyzer type="query"&gt;
-        &lt;tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" isMaxWordLength="true" useSmart="true" conf="ik.conf"/&gt;
-        &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
-    &lt;/analyzer&gt;
+  &lt;analyzer type="index"&gt;
+      &lt;tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="false" conf="ik.conf"/&gt;
+      &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+  &lt;/analyzer&gt;
+  &lt;analyzer type="query"&gt;
+      &lt;tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="true" conf="ik.conf"/&gt;
+      &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+  &lt;/analyzer&gt;
 &lt;/fieldType&gt;
 </pre>
     </li>
