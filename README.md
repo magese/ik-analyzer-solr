@@ -13,13 +13,13 @@ ik-analyzer for solr7.x
     </li>
     <li>
         <p>2. 将resources目录下的5个配置文件放入solr服务的jetty或tomcat的webapp/WEB-INF/classes/目录下；</p>
-        <pre>
-        ①IKAnalyzer.cfg.xml
-        ②ext.dic
-        ③stopword.dic
-        ④ik.conf
-        ⑤dynamicdic.txt
-        </pre>
+<pre>
+①IKAnalyzer.cfg.xml
+②ext.dic
+③stopword.dic
+④ik.conf
+⑤dynamicdic.txt
+</pre>
     </li>
     <li>
         <p>3. 配置solr的managed-schema，添加ik分词器，示例如下；</p>
@@ -42,10 +42,10 @@ ik-analyzer for solr7.x
     </li>
     <li>
         <p>5. ik.conf文件说明：</p>
-        <pre>
-        files=dynamicdic.txt
-        lastupdate=0
-        </pre>
+<pre>
+files=dynamicdic.txt
+lastupdate=0
+</pre>
         <p>files为动态字典列表，可以设置多个字典表，用逗号进行分隔，默认动态字典表为dynamicdic.txt；</p>
         <p>lastupdate默认值为0，每次对动态字典表修改后请+1，不然不会将字典表中新的词语添加到内存中，lastupdate采用的是int类型，不支持时间戳，如果使用时间戳的朋友可以把源码中的int改成long即可；</p>
     </li>
