@@ -21,8 +21,8 @@ ik-analyzer for solr7.x
     </li>
     <li>
         <p>3. 配置solr的managed-schema，添加ik分词器，示例如下；</p>
-        <div class="content">
-        &lt;!-- ik分词器 --&gt;
+        <pre>
+        &lt;!-- ik分词器 --&gt;
         &lt;fieldType name="text_ik" class="solr.TextField"&gt;
             &lt;analyzer type="index"&gt;
                 &lt;tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" isMaxWordLength="false" useSmart="false"
@@ -35,7 +35,7 @@ ik-analyzer for solr7.x
                 &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
             &lt;/analyzer&gt;
         &lt;/fieldType&gt;
-        </div>
+        </pre>
     </li>
     <li>
         <p>4. 启动solr服务测试分词；</p>
