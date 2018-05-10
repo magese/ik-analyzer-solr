@@ -21,21 +21,19 @@ ik-analyzer for solr7.x
     </li>
     <li>
         <p>3. 配置solr的managed-schema，添加ik分词器，示例如下；</p>
-        <pre>
-        &lt;!-- ik分词器 --&gt;
-        &lt;fieldType name="text_ik" class="solr.TextField"&gt;
-            &lt;analyzer type="index"&gt;
-                &lt;tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" isMaxWordLength="false" useSmart="false"
-                           conf="ik.conf"/&gt;
-                &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
-            &lt;/analyzer&gt;
-            &lt;analyzer type="query"&gt;
-                &lt;tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" isMaxWordLength="true" useSmart="true"
-                           conf="ik.conf"/&gt;
-                &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
-            &lt;/analyzer&gt;
-        &lt;/fieldType&gt;
-        </pre>
+<pre>
+&lt;!-- ik分词器 --&gt;
+&lt;fieldType name="text_ik" class="solr.TextField"&gt;
+    &lt;analyzer type="index"&gt;
+        &lt;tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" isMaxWordLength="false" useSmart="false" conf="ik.conf"/&gt;
+        &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+    &lt;/analyzer&gt;
+    &lt;analyzer type="query"&gt;
+        &lt;tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" isMaxWordLength="true" useSmart="true" conf="ik.conf"/&gt;
+        &lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+    &lt;/analyzer&gt;
+&lt;/fieldType&gt;
+</pre>
     </li>
     <li>
         <p>4. 启动solr服务测试分词；</p>
