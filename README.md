@@ -7,7 +7,14 @@ ik-analyzer for solr7.x
 
 <hr>
 <h2>使用说明：</h2><br>
-
+<pre>
+&lt;!-- Maven仓库地址 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.github.magese&lt;/groupId&gt;
+    &lt;artifactId&gt;ik-analyzer-solr7&lt;/artifactId&gt;
+    &lt;version&gt;7.x&lt;/version&gt;
+&lt;/dependency&gt;
+</pre>
 <ul>
     <li>
         <p>1. 将jar包放入solr服务的jetty或tomcat的webapp/WEB-INF/lib/目录下；</p>
