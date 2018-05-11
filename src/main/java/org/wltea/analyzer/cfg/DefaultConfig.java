@@ -103,7 +103,7 @@ public class DefaultConfig implements Configuration {
     /**
      * 获取扩展字典配置路径
      *
-     * @return List<String> 相对类加载器的路径
+     * @return 相对类加载器的路径
      */
     public List<String> getExtDictionarys() {
         List<String> extDictFiles = new ArrayList<>(2);
@@ -124,7 +124,7 @@ public class DefaultConfig implements Configuration {
     /**
      * 获取扩展停止词典配置路径
      *
-     * @return List<String> 相对类加载器的路径
+     * @return 相对类加载器的路径
      */
     public List<String> getExtStopWordDictionarys() {
         List<String> extStopWordDictFiles = new ArrayList<>(2);

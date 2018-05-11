@@ -46,7 +46,7 @@ public interface Configuration {
     /**
      * 获取扩展字典配置路径
      *
-     * @return List<String> 相对类加载器的路径
+     * @return 相对类加载器的路径
      */
     List<String> getExtDictionarys();
 
@@ -54,7 +54,7 @@ public interface Configuration {
     /**
      * 获取扩展停止词典配置路径
      *
-     * @return List<String> 相对类加载器的路径
+     * @return 相对类加载器的路径
      */
     List<String> getExtStopWordDictionarys();
 

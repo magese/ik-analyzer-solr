@@ -118,7 +118,7 @@ public class Dictionary {
     /**
      * 批量加载新词条
      *
-     * @param words Collection<String>词条列表
+     * @param words 词条列表
      */
     public void addWords(Collection<String> words) {
         if (words != null) {

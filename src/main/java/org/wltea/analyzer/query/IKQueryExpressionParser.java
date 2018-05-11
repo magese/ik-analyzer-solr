@@ -18,9 +18,6 @@ import java.util.Stack;
 /**
  * IK简易查询表达式解析
  * 结合SWMCQuery算法
- * <p>
- * 表达式例子 ：
- * (id='1231231' && title:'monkey') || (content:'你好吗'  || ulr='www.ik.com') - name:'helloword'
  *
  * @author linliangyi
  */
