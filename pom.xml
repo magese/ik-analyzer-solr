@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.magese</groupId>
-    <artifactId>ik-analyzer-solr7</artifactId>
-    <version>7.x</version>
+    <artifactId>ik-analyzer</artifactId>
+    <version>7.4.0</version>
     <packaging>jar</packaging>
 
     <name>ik-analyzer-solr7</name>
     <url>http://code.google.com/p/ik-analyzer/</url>
-    <description>IK-Analyzer for solr7.x</description>
+    <description>IK-Analyzer for solr7.4</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
