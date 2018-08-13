@@ -6,6 +6,7 @@ ik-analyzer for solr7.x
 <h3>在不需要重启solr服务的情况下加载新增的字典。</h3>
 
 >更新说明
+>* 2018-08-13: 更新maven仓库地址
 >* 2018-08-01: 移除默认的扩展词与停用词
 >* 2018-07-23: 升级lucene版本为7.4.0
 
@@ -15,8 +16,8 @@ ik-analyzer for solr7.x
 &lt;!-- Maven仓库地址 --&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;com.github.magese&lt;/groupId&gt;
-    &lt;artifactId&gt;ik-analyzer-solr7&lt;/artifactId&gt;
-    &lt;version&gt;7.x&lt;/version&gt;
+    &lt;artifactId&gt;ik-analyzer&lt;/artifactId&gt;
+    &lt;version&gt;7.4.0&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 <ul>
