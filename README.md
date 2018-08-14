@@ -19,8 +19,8 @@ ik-analyzer for solr7.x
     &lt;artifactId&gt;ik-analyzer&lt;/artifactId&gt;
     &lt;version&gt;7.4.0&lt;/version&gt;
 &lt;/dependency&gt;
-
-jar包下载地址：
+<br>
+&lt;!-- jar包下载地址 --&gt;
 <a>http://central.maven.org/maven2/com/github/magese/ik-analyzer/7.4.0/ik-analyzer-7.4.0.jar</a>
 </pre>
 <ul>
