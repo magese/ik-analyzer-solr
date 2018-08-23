@@ -1,7 +1,7 @@
 /*
- * IK 中文分词  版本 7.0
- * IK Analyzer release 7.0
- * update by 高志成(magese@live.cn)
+ * IK 中文分词  版本 7.4
+ * IK Analyzer release 7.4
+ * update by Magese(magese@live.cn)
  */
 package org.wltea.analyzer.lucene;
 
@@ -35,7 +35,7 @@ public final class IKTokenizer extends Tokenizer {
 	private int endPosition;
 	
 	/**
-	 * Lucene 4.0 Tokenizer适配器类构造函数
+	 * Lucene 7.4 Tokenizer适配器类构造函数
 	 */
 	public IKTokenizer() {
 	    this(false);

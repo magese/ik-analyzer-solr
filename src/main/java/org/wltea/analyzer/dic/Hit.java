@@ -1,7 +1,7 @@
 /*
- * IK 中文分词  版本 7.0
- * IK Analyzer release 7.0
- * update by 高志成(magese@live.cn)
+ * IK 中文分词  版本 7.4
+ * IK Analyzer release 7.4
+ * update by Magese(magese@live.cn)
  */
 package org.wltea.analyzer.dic;
 
