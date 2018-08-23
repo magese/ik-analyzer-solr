@@ -66,7 +66,8 @@ files=dynamicdic.txt
 lastupdate=0
 </pre>
         <p>files为动态字典列表，可以设置多个字典表，用逗号进行分隔，默认动态字典表为dynamicdic.txt；</p>
-        <p>lastupdate默认值为0，每次对动态字典表修改后请+1，不然不会将字典表中新的词语添加到内存中，lastupdate采用的是int类型，不支持时间戳，如果使用时间戳的朋友可以把源码中的int改成long即可；</p>
+        <p>lastupdate默认值为0，每次对动态字典表修改后请+1，不然不会将字典表中新的词语添加到内存中。<s>lastupdate采用的是int类型，不支持时间戳，如果使用时间戳的朋友可以把源码中的int改成long即可；</s></p>
+        <p>2018-08-23 已将源码中lastUpdate改为long类型，现可以用时间戳了。</p>
     </li>
     <li>
         <p>5-dynamicdic.txt 为动态字典，在此文件配置的词语不需重启服务即可加载进内存中；</p>
