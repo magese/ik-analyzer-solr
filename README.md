@@ -1,9 +1,11 @@
 # ik-analyzer-solr7
 ik-analyzer for solr7.x
-<p>IKAnalyzer的作者为林良益（linliangyi2007@gmail.com），项目网站为http://code.google.com/p/ik-analyzer/</p>
+<p>IKAnalyzer的原作者为林良益（linliangyi2007@gmail.com），项目网站为http://code.google.com/p/ik-analyzer/</p>
 
-<h3>适配最新版solr7，并添加动态加载字典表功能；</h3>
-<h3>在不需要重启solr服务的情况下加载新增的字典。</h3>
+* 该项目根据博主[@星火燎原智勇](http://www.cnblogs.com/liang1101/articles/6395016.html)的博客进行修改，其GITHUB地址为[@liang68](https://github.com/liang68)
+
+<h4>适配最新版solr7，并添加动态加载字典表功能；</h4>
+<h4>在不需要重启solr服务的情况下加载新增的字典。</h4>
 
 >更新说明
 >* 2018-08-23: 
