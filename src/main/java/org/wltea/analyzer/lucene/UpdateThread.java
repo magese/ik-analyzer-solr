@@ -11,14 +11,14 @@ import java.util.Vector;
 /**
  * 更新扩展词典子线程类
  */
-public class UpdateKeeper implements Runnable {
+public class UpdateThread implements Runnable {
     private static final long INTERVAL = 30000L;                            // 循环等待时间
     private Vector<UpdateJob> filterFactorys;                               // 更新任务集合
 
     /**
      * 私有化构造器，阻止外部进行实例化
      */
-    private UpdateKeeper() {
+    private UpdateThread() {
         this.filterFactorys = new Vector<>();
         Thread worker = new Thread(this);
         worker.setDaemon(true);
@@ -29,7 +29,7 @@ public class UpdateKeeper implements Runnable {
      * 静态内部类，实现线程安全单例模式
      */
     private static class Builder {
-        private static UpdateKeeper singleton = new UpdateKeeper();
+        private static UpdateThread singleton = new UpdateThread();
     }
 
     /**
@@ -38,8 +38,8 @@ public class UpdateKeeper implements Runnable {
      *
      * @return 本类的实例
      */
-    static UpdateKeeper getInstance() {
-        return UpdateKeeper.Builder.singleton;
+    static UpdateThread getInstance() {
+        return UpdateThread.Builder.singleton;
     }
 
     /**
