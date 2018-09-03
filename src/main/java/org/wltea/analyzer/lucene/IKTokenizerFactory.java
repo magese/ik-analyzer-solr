@@ -19,7 +19,7 @@ import java.util.*;
 /**
  * @author <a href="magese@live.cn">Magese</a>
  */
-public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoaderAware, UpdateKeeper.UpdateJob {
+public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoaderAware, UpdateThread.UpdateJob {
     private boolean useSmart;
     private ResourceLoader loader;
     private long lastUpdateTime = -1L;
@@ -37,19 +37,19 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
     }
 
     /**
-     * 通知方法
-     * 当改方法被调用时，将当前实例注册到更新任务中
+     * 通知方法，用于获取工厂使用的资源文件路径等信息，实现与{@link ResourceLoaderAware#inform(ResourceLoader)}
+     * 当该方法被调用时，将当前实例注册到更新任务中
      *
      * @param resourceLoader 类路径资源加载实例
      * @throws IOException IO读写异常
      */
     @Override
     public void inform(ResourceLoader resourceLoader) throws IOException {
-        System.out.println(String.format(":::ik:::inform:::::::::::::::::::::::: %s", this.conf));
+        System.out.println(String.format("IKTokenizerFactory "+ this.hashCode() +" inform conf: %s", this.conf));
         this.loader = resourceLoader;
         update();
         if ((this.conf != null) && (!this.conf.trim().isEmpty())) {
-            UpdateKeeper.getInstance().register(this);
+            UpdateThread.getInstance().register(this);
         }
     }
 
@@ -100,13 +100,13 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
                 String paths = p.getProperty("files");                      // 获取词典文件名
                 if ((paths == null) || (paths.trim().isEmpty()))
                     return null;
-                System.out.println("loading conf files success.");
+                System.out.println("loading ik.conf files success.");
                 return p;
             }
             this.lastUpdateTime = t;
             return null;
         } catch (Exception e) {
-            System.err.println("IK parsing conf NullPointerException~~~~~" + Arrays.toString(e.getStackTrace()));
+            System.err.println("parsing ik.conf NullPointerException!!!" + Arrays.toString(e.getStackTrace()));
         }
         return null;
     }
