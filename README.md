@@ -16,7 +16,7 @@ ik-analyzer for solr7.x
 >* 2018-07-23: 升级lucene版本为7.4.0
 
 <hr>
-<h2>使用说明：</h2><br>
+<H2>使用说明：</H2><BR>
 
 * jar包下载地址：[ik-analyzer-7.4.0.jar](http://central.maven.org/maven2/com/github/magese/ik-analyzer/7.4.0/ik-analyzer-7.4.0.jar)
 
