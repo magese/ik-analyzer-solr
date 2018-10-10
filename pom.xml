@@ -4,16 +4,16 @@
 
     <groupId>com.github.magese</groupId>
     <artifactId>ik-analyzer</artifactId>
-    <version>7.4.0</version>
+    <version>7.5.0</version>
     <packaging>jar</packaging>
 
     <name>ik-analyzer-solr7</name>
     <url>http://code.google.com/p/ik-analyzer/</url>
-    <description>IK-Analyzer for solr7.4</description>
+    <description>IK-Analyzer for solr7.5</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lucene.version>7.4.0</lucene.version>
+        <lucene.version>7.5.0</lucene.version>
         <javac.src.version>1.8</javac.src.version>
         <javac.target.version>1.8</javac.target.version>
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
