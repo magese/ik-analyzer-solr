@@ -21,7 +21,7 @@ ik-analyzer for solr7.x
 <H2>使用说明：</H2><BR>
 
 * jar包下载地址：[ik-analyzer-7.5.0.jar](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/7.5.0/ik-analyzer-7.5.0.jar)
-* 历史版本：<a href="https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav" target="_blank">Central Repository</a>
+* 历史版本：[Central Repository](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
 <pre>
 &lt;!-- Maven仓库地址 --&gt;
