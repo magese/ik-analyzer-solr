@@ -2,6 +2,7 @@
 ik-analyzer for solr7.x
 
 <!-- Badges section here. -->
+[![GitHub version](https://img.shields.io/badge/version-7.5.0-519dd9.svg)](https://github.com/magese/ik-analyzer-solr7)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/magese/ik-analyzer-solr7/releases)
 
 [![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](./LICENSE)
@@ -91,3 +92,4 @@ ik-analyzer for solr7.x
 如果您在使用过程中遇到了BUG，或者有不清楚的地方，请挂ISSUE或者联系作者：<magese@live.cn>
 
 如果您觉得该项目对您有帮助，请别忘记给这个项目一个`star`
+[![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://www.java.com)
