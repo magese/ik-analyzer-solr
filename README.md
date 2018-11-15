@@ -3,7 +3,7 @@ ik-analyzer for solr7.x
 
 <!-- Badges section here. -->
 [![Analytics](https://ga-beacon.appspot.com/UA-129307434-1/welcome-page)](https://github.com/magese/ik-analyzer-solr7)
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/magese/ik-analyzer-solr7/star)
 
 [![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](https://github.com/magese/ik-analyzer-solr7/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/magese/ik-analyzer-solr7.svg?branch=master)](https://travis-ci.org/magese/ik-analyzer-solr7)
