@@ -1,5 +1,19 @@
 # ik-analyzer-solr7
 ik-analyzer for solr7.x
+
+<!-- Badges section here. -->
+[![Analytics](https://ga-beacon.appspot.com/UA-129307434-1/welcome-page)](https://github.com/magese/ik-analyzer-solr7)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+
+[![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](https://github.com/magese/ik-analyzer-solr7/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/magese/ik-analyzer-solr7.svg?branch=master)](https://travis-ci.org/magese/ik-analyzer-solr7)
+[![Github Releases](https://img.shields.io/github/downloads/magese/ik-analyzer-solr7/latest/total.svg)](https://github.com/magese/ik-analyzer-solr7/releases)
+
+[![GitHub forks](https://img.shields.io/github/forks/magese/ik-analyzer-solr7.svg?style=social&label=Fork)](https://github.com/magese/ik-analyzer-solr7/fork)
+[![GitHub stars](https://img.shields.io/github/stars/magese/ik-analyzer-solr7.svg?style=social&label=Star)](https://github.com/magese/ik-analyzer-solr7/star)
+<!-- /Badges section end. -->
+
+
 <p>IKAnalyzer的原作者为林良益（linliangyi2007@gmail.com），项目网站为http://code.google.com/p/ik-analyzer/</p>
 
 * 该项目根据博主[@星火燎原智勇](http://www.cnblogs.com/liang1101/articles/6395016.html)的博客进行修改，其GITHUB地址为[@liang68](https://github.com/liang68)
