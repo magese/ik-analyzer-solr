@@ -4,7 +4,7 @@ ik-analyzer for solr7.x
 <!-- Badges section here. -->
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/magese/ik-analyzer-solr7/releases)
 
-[![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](https://github.com/magese/ik-analyzer-solr7/blob/master/LICENSE)
+[![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](./LICENSE)
 [![Build Status](https://travis-ci.org/magese/ik-analyzer-solr7.svg?branch=master)](https://travis-ci.org/magese/ik-analyzer-solr7)
 [![Github Releases](https://img.shields.io/github/downloads/magese/ik-analyzer-solr7/latest/total.svg)](https://github.com/magese/ik-analyzer-solr7/releases)
 
@@ -60,6 +60,8 @@ ik-analyzer for solr7.x
 
 4. 启动Solr服务测试分词；
 
+    ![analyzer](./img/analyzer.png)
+
 5. `ik.conf`文件说明：
     ```console
     files=dynamicdic.txt
@@ -70,6 +72,7 @@ ik-analyzer for solr7.x
     2. `lastupdate`默认值为`0`，每次对动态字典表修改后请+1，不然不会将字典表中新的词语添加到内存中。<s>`lastupdate`采用的是`int`类型，不支持时间戳，如果使用时间戳的朋友可以把源码中的`int`改成`long`即可；</s> `2018-08-23` 已将源码中`lastUpdate`改为`long`类型，现可以用时间戳了。
 
 6. `dynamicdic.txt` 为动态字典
+
     在此文件配置的词语不需重启服务即可加载进内存中；
 
 
