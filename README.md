@@ -92,4 +92,5 @@ ik-analyzer for solr7.x
 如果您在使用过程中遇到了BUG，或者有不清楚的地方，请挂ISSUE或者联系作者：<magese@live.cn>
 
 如果您觉得该项目对您有帮助，请别忘记给这个项目一个`star`
+
 [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://www.java.com)
