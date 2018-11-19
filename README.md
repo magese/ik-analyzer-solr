@@ -2,12 +2,11 @@
 ik-analyzer for solr7.x
 
 <!-- Badges section here. -->
-[![GitHub version](https://img.shields.io/badge/version-7.5.0-519dd9.svg)](https://github.com/magese/ik-analyzer-solr7)
+[![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/magese/ik-analyzer-solr7/releases)
 
 [![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](./LICENSE)
 [![Build Status](https://travis-ci.org/magese/ik-analyzer-solr7.svg?branch=master)](https://travis-ci.org/magese/ik-analyzer-solr7)
-[![Github Releases](https://img.shields.io/github/downloads/magese/ik-analyzer-solr7/latest/total.svg)](https://github.com/magese/ik-analyzer-solr7/releases)
 
 [![GitHub forks](https://img.shields.io/github/forks/magese/ik-analyzer-solr7.svg?style=social&label=Fork)](https://github.com/magese/ik-analyzer-solr7/fork)
 [![GitHub stars](https://img.shields.io/github/stars/magese/ik-analyzer-solr7.svg?style=social&label=Star)](https://github.com/magese/ik-analyzer-solr7/star)
@@ -21,7 +20,7 @@ ik-analyzer for solr7.x
 
 
 ## 使用说明
-* jar包下载地址：[ik-analyzer-7.5.0.jar](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/7.5.0/ik-analyzer-7.5.0.jar)
+* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-7.5.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/7.5.0/ik-analyzer-7.5.0.jar)
 * 历史版本：[Central Repository](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
     ```console
