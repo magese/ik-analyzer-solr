@@ -13,10 +13,20 @@ ik-analyzer for solr7.x
 <!-- /Badges section end. -->
 
 ## 简介
-#### 适配最新版本solr7，并添加动态加载字典表功能；
-#### 在不需要重启solr服务的情况下加载新增的字典。
+#### 适配最新版本solr7；
+#### 扩展IK原有词库：
+| 分词工具 | 词库中词的数量 | 最后更新时间 |
+| :------: | :------: | :------: |
+| ik | 27.5万 | 2012年 |
+| mmseg | 15.7万 | 2017年 |
+| word | 64.2万 | 2014年 |
+| jieba | 58.4万 | 2012年 |
+| jcesg | 16.6万 | 2018年 |
+| sougou词库 | 115.2万 | 2018年 |
+#### 将以上词库进行整理后约188.5万条词汇；
+#### 添加动态加载字典表功能，在不需要重启solr服务的情况下加载新增的字典。
 * IKAnalyzer的原作者为林良益<linliangyi2007@gmail.com>，项目网站为<http://code.google.com/p/ik-analyzer>
-* 该项目根据博主[@星火燎原智勇](http://www.cnblogs.com/liang1101/articles/6395016.html)的博客进行修改，其GITHUB地址为[@liang68](https://github.com/liang68)
+* 该项目动态加载功能根据博主[@星火燎原智勇](http://www.cnblogs.com/liang1101/articles/6395016.html)的博客进行修改，其GITHUB地址为[@liang68](https://github.com/liang68)
 
 
 ## 使用说明
