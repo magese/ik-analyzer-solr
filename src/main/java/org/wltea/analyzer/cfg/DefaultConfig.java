@@ -41,16 +41,16 @@ public class DefaultConfig implements Configuration {
     /*
      * 分词器默认字典路径
      */
-    private static final String PATH_DIC_MAIN = "org/wltea/analyzer/dic/main2012.dic";
-    private static final String PATH_DIC_QUANTIFIER = "org/wltea/analyzer/dic/quantifier.dic";
+    private static final String PATH_DIC_MAIN = "dict/magese.dic";
+    private static final String PATH_DIC_QUANTIFIER = "dict/quantifier.dic";
 
     /*
      * 分词器配置文件路径
      */
     private static final String FILE_NAME = "IKAnalyzer.cfg.xml";
-    //配置属性——扩展字典
+    // 配置属性——扩展字典
     private static final String EXT_DICT = "ext_dict";
-    //配置属性——扩展停止词典
+    // 配置属性——扩展停止词典
     private static final String EXT_STOP = "ext_stopwords";
 
     private Properties props;
