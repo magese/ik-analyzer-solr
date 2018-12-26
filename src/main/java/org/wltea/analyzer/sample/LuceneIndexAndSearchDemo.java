@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 7.5版本 由 Magese (magese@live.cn) 更新
- * release 7.5 update by Magese(magese@live.cn)
+ * 7.6版本 由 Magese (magese@live.cn) 更新
+ * release 7.6 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.sample;
