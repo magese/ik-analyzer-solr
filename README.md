@@ -30,15 +30,15 @@ ik-analyzer for solr7.x
 
 
 ## 使用说明
-* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-7.5.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/7.5.0/ik-analyzer-7.5.0.jar)
-* 历史版本：[Central Repository](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
+* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-7.6.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/7.6.0/ik-analyzer-7.6.0.jar)
+* 历史版本：[![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
     ```console
     <!-- Maven仓库地址 -->
     <dependency>
         <groupId>com.github.magese</groupId>
         <artifactId>ik-analyzer</artifactId>
-        <version>7.5.0</version>
+        <version>7.6.0</version>
     </dependency>
     ```
 
