@@ -42,10 +42,10 @@ ik-analyzer for solr7.x
     </dependency>
     ```
 
-#### Solr-Cloud
+### Solr-Cloud
 * [Solr-Cloud说明](./README-CLOUD.md)
 
-#### 单机版Solr
+### 单机版Solr
 1. 将jar包放入Solr服务的`Jetty`或`Tomcat`的`webapp/WEB-INF/lib/`目录下；
 
 2. 将`resources`目录下的5个配置文件放入solr服务的`Jetty`或`Tomcat`的`webapp/WEB-INF/classes/`目录下；
