@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 7.5版本 由 Magese (magese@live.cn) 更新
- * release 7.5 update by Magese(magese@live.cn)
+ * 7.6版本 由 Magese (magese@live.cn) 更新
+ * release 7.6 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.lucene;
@@ -36,6 +36,11 @@ import org.wltea.analyzer.dic.Dictionary;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -50,7 +55,9 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
     public IKTokenizerFactory(Map<String, String> args) {
         super(args);
         String useSmartArg = args.get("useSmart");
+        String confArg = args.get("conf");
         this.setUseSmart(Boolean.parseBoolean(useSmartArg));
+        this.setConf(confArg);
     }
 
     @Override
@@ -67,10 +74,10 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
      */
     @Override
     public void inform(ResourceLoader resourceLoader) throws IOException {
-        System.out.println(String.format("IKTokenizerFactory "+ this.hashCode() +" inform conf: %s", this.conf));
+        System.out.println(String.format("IKTokenizerFactory " + this.hashCode() + " inform conf: %s", getConf()));
         this.loader = resourceLoader;
         update();
-        if ((this.conf != null) && (!this.conf.trim().isEmpty())) {
+        if ((getConf() != null) && (!getConf().trim().isEmpty())) {
             UpdateThread.getInstance().register(this);
         }
     }
@@ -82,24 +89,27 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
      */
     @Override
     public void update() throws IOException {
+        // 默认UTF-8解码
+        CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder()
+                .onMalformedInput(CodingErrorAction.REPORT)
+                .onUnmappableCharacter(CodingErrorAction.REPORT);
+
         // 获取ik.conf配置文件信息
         Properties p = canUpdate();
         if (p != null) {
             // 获取词典表名称集合
             List<String> dicPaths = SplitFileNames(p.getProperty("files"));
             // 获取词典文件的IO流
-            List<InputStream> inputStreamList = new ArrayList<>();
+            List<Reader> inputStreamReaderList = new ArrayList<>();
             for (String path : dicPaths) {
                 if ((path != null) && (!path.isEmpty())) {
-                    InputStream is = this.loader.openResource(path);
-                    if (is != null) {
-                        inputStreamList.add(is);
-                    }
+                    Reader isr = new InputStreamReader(loader.openResource(path), decoder);
+                    inputStreamReaderList.add(isr);
                 }
             }
             // 如果IO流集合不为空则执行加载词典
-            if (!inputStreamList.isEmpty())
-                Dictionary.reloadDic(inputStreamList);
+            if (!inputStreamReaderList.isEmpty())
+                Dictionary.reloadDic(inputStreamReaderList);
         }
     }
 
@@ -108,10 +118,10 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
      */
     private Properties canUpdate() {
         try {
-            if (this.conf == null)
+            if (getConf() == null)
                 return null;
             Properties p = new Properties();
-            InputStream confStream = this.loader.openResource(this.conf);   // 获取配置文件流
+            InputStream confStream = this.loader.openResource(getConf());   // 获取配置文件流
             p.load(confStream);                                             // 读取配置文件
             confStream.close();                                             // 关闭文件流
             String lastupdate = p.getProperty("lastupdate", "0");           // 获取最后更新数字
@@ -122,13 +132,13 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
                 String paths = p.getProperty("files");                      // 获取词典文件名
                 if ((paths == null) || (paths.trim().isEmpty()))
                     return null;
-                System.out.println("loading ik.conf files success.");
+                System.out.println("loading " + getConf() + " files success.");
                 return p;
             }
             this.lastUpdateTime = t;
             return null;
         } catch (Exception e) {
-            System.err.println("parsing ik.conf NullPointerException!!!" + Arrays.toString(e.getStackTrace()));
+            System.err.println("parsing " + getConf() + " NullPointerException!!!" + Arrays.toString(e.getStackTrace()));
         }
         return null;
     }
@@ -148,11 +158,20 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
         return result;
     }
 
+    /* getter & setter */
     private boolean useSmart() {
         return useSmart;
     }
 
     private void setUseSmart(boolean useSmart) {
         this.useSmart = useSmart;
+    }
+
+    private String getConf() {
+        return conf;
+    }
+
+    private void setConf(String conf) {
+        this.conf = conf;
     }
 }
