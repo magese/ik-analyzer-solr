@@ -21,16 +21,13 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 7.5版本 由 Magese (magese@live.cn) 更新
- * release 7.5 update by Magese(magese@live.cn)
+ * 7.6版本 由 Magese (magese@live.cn) 更新
+ * release 7.6 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.dic;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
@@ -113,32 +110,30 @@ public class Dictionary {
      * 重新更新词典
      * 由于停用词等不经常变也不建议常增加，故这里只修改动态扩展词库
      *
-     * @param inputStreamList 词典文件IO流集合
+     * @param inputStreamReaderList 词典文件IO流集合
      */
-    public static void reloadDic(List<InputStream> inputStreamList) {
+    public static void reloadDic(List<Reader> inputStreamReaderList) {
         // 如果本类单例尚未实例化，则先进行初始化操作
         if (singleton == null) {
             Configuration cfg = DefaultConfig.getInstance();
             initial(cfg);
         }
         // 对词典流集合进行循环读取，将读取到的词语加载到主词典中
-        for (InputStream is : inputStreamList) {
+        for (Reader in : inputStreamReaderList) {
             try {
-                BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8), 512);
+                LineNumberReader br = new LineNumberReader(in);
                 String theWord;
-                do {
-                    theWord = br.readLine();
-                    if (theWord != null && !"".equals(theWord.trim())) {
-                        singleton._MainDict.fillSegment(theWord.trim().toLowerCase().toCharArray());
-                    }
-                } while (theWord != null);
+                while ((theWord = br.readLine()) != null) {
+                    if (theWord.trim().length() == 0 || theWord.trim().charAt(0) == '#') continue;
+                    singleton._MainDict.fillSegment(theWord.trim().toLowerCase().toCharArray());
+                }
             } catch (IOException ioe) {
                 System.err.println("Other Dictionary loading exception.");
                 ioe.printStackTrace();
             } finally {
                 try {
-                    if (is != null) {
-                        is.close();
+                    if (in != null) {
+                        in.close();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
