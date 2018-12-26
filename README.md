@@ -24,7 +24,7 @@ ik-analyzer for solr7.x
 | jcesg | 16.6万 | 2018年 |
 | sougou词库 | 115.2万 | 2018年 |
 #### 将以上词库进行整理后约188.5万条词汇；
-#### 添加动态加载字典表功能，在不需要重启solr服务的情况下加载新增的字典。
+#### 添加动态加载词典表功能，在不需要重启solr服务的情况下加载新增的词典。
 * IKAnalyzer的原作者为林良益<linliangyi2007@gmail.com>，项目网站为<http://code.google.com/p/ik-analyzer>
 * 该项目动态加载功能根据博主[@星火燎原智勇](http://www.cnblogs.com/liang1101/articles/6395016.html)的博客进行修改，其GITHUB地址为[@liang68](https://github.com/liang68)
 
@@ -42,6 +42,10 @@ ik-analyzer for solr7.x
     </dependency>
     ```
 
+##### Solr-Cloud
+* [Solr-Cloud说明](./README-CLOUD.md)
+
+##### 单机版Solr
 1. 将jar包放入Solr服务的`Jetty`或`Tomcat`的`webapp/WEB-INF/lib/`目录下；
 
 2. 将`resources`目录下的5个配置文件放入solr服务的`Jetty`或`Tomcat`的`webapp/WEB-INF/classes/`目录下；
@@ -78,21 +82,26 @@ ik-analyzer for solr7.x
     lastupdate=0
     ```
 
-    1. `files`为动态字典列表，可以设置多个字典表，用逗号进行分隔，默认动态字典表为`dynamicdic.txt`；
-    2. `lastupdate`默认值为`0`，每次对动态字典表修改后请+1，不然不会将字典表中新的词语添加到内存中。<s>`lastupdate`采用的是`int`类型，不支持时间戳，如果使用时间戳的朋友可以把源码中的`int`改成`long`即可；</s> `2018-08-23` 已将源码中`lastUpdate`改为`long`类型，现可以用时间戳了。
+    1. `files`为动态词典列表，可以设置多个词典表，用逗号进行分隔，默认动态词典表为`dynamicdic.txt`；
+    2. `lastupdate`默认值为`0`，每次对动态词典表修改后请+1，不然不会将词典表中新的词语添加到内存中。<s>`lastupdate`采用的是`int`类型，不支持时间戳，如果使用时间戳的朋友可以把源码中的`int`改成`long`即可；</s> `2018-08-23` 已将源码中`lastUpdate`改为`long`类型，现可以用时间戳了。
 
-6. `dynamicdic.txt` 为动态字典
+6. `dynamicdic.txt` 为动态词典
 
-    在此文件配置的词语不需重启服务即可加载进内存中；
+    在此文件配置的词语不需重启服务即可加载进内存中。
+    以`#`开头的词语视为注释，将不会加载到内存中。
 
 
 ## 更新说明
+- `2018-12-26:` 
+    - 升级lucene版本为`7.6.0`
+    - 兼容solr-cloud，动态词典配置文件及动态词典可交由`zookeeper`进行管理
+    - 动态词典增加注释功能，以`#`开头的行将视为注释
 - `2018-12-04:` 整理更新词库列表`magese.dic`
 - `2018-10-10:` 升级lucene版本为`7.5.0`
 - `2018-09-03:` 优化注释与输出信息，取消部分中文输出避免不同字符集乱码，现会打印被调用inform方法的hashcode
 - `2018-08-23: `
-    - ⑴完善了动态更新词库代码注释；
-    - ⑵将ik.conf配置文件中的lastUpdate属性改为long类型，现已支持时间戳形式
+    - 完善了动态更新词库代码注释；
+    - 将ik.conf配置文件中的lastUpdate属性改为long类型，现已支持时间戳形式
 - `2018-08-13:` 更新maven仓库地址
 - `2018-08-01:` 移除默认的扩展词与停用词
 - `2018-07-23:` 升级lucene版本为`7.4.0`
