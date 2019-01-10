@@ -9,7 +9,7 @@ ik-analyzer for solr7.x
 [![Build Status](https://travis-ci.org/magese/ik-analyzer-solr7.svg?branch=master)](https://travis-ci.org/magese/ik-analyzer-solr7)
 
 [![GitHub forks](https://img.shields.io/github/forks/magese/ik-analyzer-solr7.svg?style=social&label=Fork)](https://github.com/magese/ik-analyzer-solr7/fork)
-[![GitHub stars](https://img.shields.io/github/stars/magese/ik-analyzer-solr7.svg?style=social&label=Star)](https://github.com/magese/ik-analyzer-solr7/star)
+[![GitHub stars](https://img.shields.io/github/stars/magese/ik-analyzer-solr7.svg?style=social&label=Star)](https://github.com/magese/ik-analyzer-solr7/stargazers)
 <!-- /Badges section end. -->
 
 ## 简介
