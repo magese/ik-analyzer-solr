@@ -4,7 +4,6 @@ ik-analyzer for solr7.x
 <!-- Badges section here. -->
 [![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/magese/ik-analyzer-solr7/releases)
-
 [![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](./LICENSE)
 [![Build Status](https://travis-ci.org/magese/ik-analyzer-solr7.svg?branch=master)](https://travis-ci.org/magese/ik-analyzer-solr7)
 
