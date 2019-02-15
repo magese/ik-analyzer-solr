@@ -29,7 +29,7 @@ ik-analyzer for solr7.x
 
 
 ## 使用说明
-* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-7.6.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/7.6.0/ik-analyzer-7.6.0.jar)
+* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-7.7.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/7.7.0/ik-analyzer-7.7.0.jar)
 * 历史版本：[![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
     ```console
@@ -91,6 +91,7 @@ ik-analyzer for solr7.x
 
 
 ## 更新说明
+- `2019-02-15:` 升级lucene版本为`7.7.0`
 - `2018-12-26:` 
     - 升级lucene版本为`7.6.0`
     - 兼容solr-cloud，动态词典配置文件及动态词典可交由`zookeeper`进行管理
