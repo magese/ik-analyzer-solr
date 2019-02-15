@@ -37,7 +37,7 @@ ik-analyzer for solr7.x
     <dependency>
         <groupId>com.github.magese</groupId>
         <artifactId>ik-analyzer</artifactId>
-        <version>7.6.0</version>
+        <version>7.7.0</version>
     </dependency>
     ```
 
