@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 7.5
- * IK Analyzer release 7.5
+ * IK 中文分词  版本 7.7
+ * IK Analyzer release 7.7
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 7.6版本 由 Magese (magese@live.cn) 更新
- * release 7.6 update by Magese(magese@live.cn)
+ * 7.7版本 由 Magese (magese@live.cn) 更新
+ * release 7.7 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.lucene;
