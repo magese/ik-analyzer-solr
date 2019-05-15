@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 7.7.1
- * IK Analyzer release 7.7.1
+ * IK 中文分词  版本 8.0.0
+ * IK Analyzer release 8.0.0
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 7.7.1版本 由 Magese (magese@live.cn) 更新
- * release 7.7.1 update by Magese(magese@live.cn)
+ * 8.0.0版本 由 Magese (magese@live.cn) 更新
+ * release 8.0.0 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.sample;
@@ -39,10 +39,7 @@ import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 import org.wltea.analyzer.lucene.IKAnalyzer;
@@ -107,10 +104,11 @@ public class LuceneIndexAndSearchDemo {
 
             //搜索相似度最高的5条记录
             TopDocs topDocs = isearcher.search(query, 5);
-            System.out.println("命中：" + topDocs.totalHits);
+            long totalHits = topDocs.totalHits.value;
+            System.out.println("命中：" + totalHits);
             //输出结果
             ScoreDoc[] scoreDocs = topDocs.scoreDocs;
-            for (int i = 0; i < topDocs.totalHits; i++) {
+            for (int i = 0; i < totalHits; i++) {
                 Document targetDoc = isearcher.doc(scoreDocs[i].doc);
                 System.out.println("内容：" + targetDoc.toString());
             }

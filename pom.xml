@@ -4,16 +4,16 @@
 
     <groupId>com.github.magese</groupId>
     <artifactId>ik-analyzer</artifactId>
-    <version>7.7.1</version>
+    <version>8.0.0</version>
     <packaging>jar</packaging>
 
-    <name>ik-analyzer-solr7</name>
+    <name>ik-analyzer-solr</name>
     <url>http://code.google.com/p/ik-analyzer/</url>
-    <description>IK-Analyzer for solr7.7.1</description>
+    <description>IK-Analyzer for solr 7-8</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lucene.version>7.7.1</lucene.version>
+        <lucene.version>8.0.0</lucene.version>
         <javac.src.version>1.8</javac.src.version>
         <javac.target.version>1.8</javac.target.version>
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
@@ -55,9 +55,9 @@
     </licenses>
     <scm>
         <tag>master</tag>
-        <url>https://github.com/magese/ik-analyzer-solr7</url>
-        <connection>scm:git:git@github.com:magese/ik-analyzer-solr7.git</connection>
-        <developerConnection>scm:git:git@github.com:magese/ik-analyzer-solr7.git</developerConnection>
+        <url>https://github.com/magese/ik-analyzer-solr</url>
+        <connection>scm:git:git@github.com:magese/ik-analyzer-solr.git</connection>
+        <developerConnection>scm:git:git@github.com:magese/ik-analyzer-solr.git</developerConnection>
     </scm>
     <developers>
         <developer>
