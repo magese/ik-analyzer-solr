@@ -1,18 +1,18 @@
-# ik-analyzer-solr7
-ik-analyzer for solr7.x
+# ik-analyzer-solr
+ik-analyzer for solr 7.x-8.x
 
 <!-- Badges section here. -->
 [![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/magese/ik-analyzer-solr7/releases)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/magese/ik-analyzer-solr/releases)
 [![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](./LICENSE)
-[![Build Status](https://travis-ci.org/magese/ik-analyzer-solr7.svg?branch=master)](https://travis-ci.org/magese/ik-analyzer-solr7)
+[![Build Status](https://travis-ci.org/magese/ik-analyzer-solr.svg?branch=master)](https://travis-ci.org/magese/ik-analyzer-solr)
 
-[![GitHub forks](https://img.shields.io/github/forks/magese/ik-analyzer-solr7.svg?style=social&label=Fork)](https://github.com/magese/ik-analyzer-solr7/fork)
-[![GitHub stars](https://img.shields.io/github/stars/magese/ik-analyzer-solr7.svg?style=social&label=Star)](https://github.com/magese/ik-analyzer-solr7/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/magese/ik-analyzer-solr.svg?style=social&label=Fork)](https://github.com/magese/ik-analyzer-solr/network/members)
+[![GitHub stars](https://img.shields.io/github/stars/magese/ik-analyzer-solr.svg?style=social&label=Star)](https://github.com/magese/ik-analyzer-solr/stargazers)
 <!-- /Badges section end. -->
 
 ## 简介
-#### 适配最新版本solr7；
+#### 适配最新版本solr 7&8；
 #### 扩展IK原有词库：
 | 分词工具 | 词库中词的数量 | 最后更新时间 |
 | :------: | :------: | :------: |
@@ -29,7 +29,7 @@ ik-analyzer for solr7.x
 
 
 ## 使用说明
-* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-7.7.1-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/7.7.1/ik-analyzer-7.7.1.jar)
+* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.0.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.0.0/ik-analyzer-8.0.0.jar)
 * 历史版本：[![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
     ```console
@@ -37,7 +37,7 @@ ik-analyzer for solr7.x
     <dependency>
         <groupId>com.github.magese</groupId>
         <artifactId>ik-analyzer</artifactId>
-        <version>7.7.1</version>
+        <version>8.0.0</version>
     </dependency>
     ```
 
@@ -91,6 +91,7 @@ ik-analyzer for solr7.x
 
 
 ## 更新说明
+- `2019-05-15:` 升级lucene版本为`8.0.0`，并支持Solr8使用
 - `2019-03-01:` 升级lucene版本为`7.7.1`
 - `2019-02-15:` 升级lucene版本为`7.7.0`
 - `2018-12-26:` 
@@ -110,7 +111,7 @@ ik-analyzer for solr7.x
 
 ## 感谢 Thanks
 
-[![IDEA](./img/jetbrains.svg)](https://www.jetbrains.com/?from=ik-analyzer-solr7)
+[![IDEA](./img/jetbrains.svg)](https://www.jetbrains.com/?from=ik-analyzer-solr)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://www.java.com)
 
