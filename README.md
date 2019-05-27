@@ -21,15 +21,15 @@ ik-analyzer for solr 7.x-8.x
 | word | 64.2万 | 2014年 |
 | jieba | 58.4万 | 2012年 |
 | jcesg | 16.6万 | 2018年 |
-| sougou词库 | 115.2万 | 2018年 |
-#### 将以上词库进行整理后约188.5万条词汇；
+| sougou词库 | 115.2万 | 2019年 |
+#### 将以上词库进行整理后约187.1万条词汇；
 #### 添加动态加载词典表功能，在不需要重启solr服务的情况下加载新增的词典。
 * IKAnalyzer的原作者为林良益<linliangyi2007@gmail.com>，项目网站为<http://code.google.com/p/ik-analyzer>
 * 该项目动态加载功能根据博主[@星火燎原智勇](http://www.cnblogs.com/liang1101/articles/6395016.html)的博客进行修改，其GITHUB地址为[@liang68](https://github.com/liang68)
 
 
 ## 使用说明
-* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.0.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.0.0/ik-analyzer-8.0.0.jar)
+* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.1.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.1.0/ik-analyzer-8.1.0.jar)
 * 历史版本：[![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
     ```console
@@ -37,7 +37,7 @@ ik-analyzer for solr 7.x-8.x
     <dependency>
         <groupId>com.github.magese</groupId>
         <artifactId>ik-analyzer</artifactId>
-        <version>8.0.0</version>
+        <version>8.1.0</version>
     </dependency>
     ```
 
@@ -91,6 +91,10 @@ ik-analyzer for solr 7.x-8.x
 
 
 ## 更新说明
+- `2019-05-27:` 
+    - 升级lucene版本为`8.1.0`
+    - 优化原词典部分重复词语
+    - 更新搜狗2019最新流行词汇词典，约20k词汇量
 - `2019-05-15:` 升级lucene版本为`8.0.0`，并支持Solr8使用
 - `2019-03-01:` 升级lucene版本为`7.7.1`
 - `2019-02-15:` 升级lucene版本为`7.7.0`
