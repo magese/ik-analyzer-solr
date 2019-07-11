@@ -6,6 +6,7 @@ ik-analyzer for solr 7.x-8.x
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/magese/ik-analyzer-solr/releases)
 [![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](./LICENSE)
 [![Build Status](https://travis-ci.org/magese/ik-analyzer-solr.svg?branch=master)](https://travis-ci.org/magese/ik-analyzer-solr)
+[![HitCount](http://hits.dwyl.io/magese/ik-analyzer-solr.svg)](http://hits.dwyl.io/magese/ik-analyzer-solr)
 
 [![GitHub forks](https://img.shields.io/github/forks/magese/ik-analyzer-solr.svg?style=social&label=Fork)](https://github.com/magese/ik-analyzer-solr/network/members)
 [![GitHub stars](https://img.shields.io/github/stars/magese/ik-analyzer-solr.svg?style=social&label=Star)](https://github.com/magese/ik-analyzer-solr/stargazers)
