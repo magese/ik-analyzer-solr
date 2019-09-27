@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.1.1
- * IK Analyzer release 8.1.1
+ * IK 中文分词  版本 8.2.0
+ * IK Analyzer release 8.2.0
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.1.1版本 由 Magese (magese@live.cn) 更新
- * release 8.1.1 update by Magese(magese@live.cn)
+ * 8.2.0版本 由 Magese (magese@live.cn) 更新
+ * release 8.2.0 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.dic;
@@ -233,15 +233,7 @@ public class Dictionary {
         }
 
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8), 512);
-            String theWord;
-            do {
-                theWord = br.readLine();
-                if (theWord != null && !"".equals(theWord.trim())) {
-                    _MainDict.fillSegment(theWord.trim().toLowerCase().toCharArray());
-                }
-            } while (theWord != null);
-
+            readDict(is, _MainDict);
         } catch (IOException ioe) {
             System.err.println("Main Dictionary loading exception.");
             ioe.printStackTrace();
@@ -274,17 +266,7 @@ public class Dictionary {
                     continue;
                 }
                 try {
-                    BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8), 512);
-                    String theWord;
-                    do {
-                        theWord = br.readLine();
-                        if (theWord != null && !"".equals(theWord.trim())) {
-                            // 加载扩展词典数据到主内存词典中
-                            // System.out.println(theWord);
-                            _MainDict.fillSegment(theWord.trim().toLowerCase().toCharArray());
-                        }
-                    } while (theWord != null);
-
+                    readDict(is, _MainDict);
                 } catch (IOException ioe) {
                     System.err.println("Extension Dictionary loading exception.");
                     ioe.printStackTrace();
@@ -319,17 +301,7 @@ public class Dictionary {
                     continue;
                 }
                 try {
-                    BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8), 512);
-                    String theWord;
-                    do {
-                        theWord = br.readLine();
-                        if (theWord != null && !"".equals(theWord.trim())) {
-                            // System.out.println(theWord);
-                            // 加载扩展停止词典数据到内存中
-                            _StopWordDict.fillSegment(theWord.trim().toLowerCase().toCharArray());
-                        }
-                    } while (theWord != null);
-
+                    readDict(is, _StopWordDict);
                 } catch (IOException ioe) {
                     System.err.println("Extension Stop word Dictionary loading exception.");
                     ioe.printStackTrace();
@@ -357,15 +329,7 @@ public class Dictionary {
             throw new RuntimeException("Quantifier Dictionary not found!!!");
         }
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8), 512);
-            String theWord;
-            do {
-                theWord = br.readLine();
-                if (theWord != null && !"".equals(theWord.trim())) {
-                    _QuantifierDict.fillSegment(theWord.trim().toLowerCase().toCharArray());
-                }
-            } while (theWord != null);
-
+            readDict(is, _QuantifierDict);
         } catch (IOException ioe) {
             System.err.println("Quantifier Dictionary loading exception.");
             ioe.printStackTrace();
@@ -379,4 +343,21 @@ public class Dictionary {
         }
     }
 
+    /**
+     * 读取词典文件到词典树中
+     *
+     * @param is          文件输入流
+     * @param dictSegment 词典树分段
+     * @throws IOException 读取异常
+     */
+    private void readDict(InputStream is, DictSegment dictSegment) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8), 512);
+        String theWord;
+        do {
+            theWord = br.readLine();
+            if (theWord != null && !"".equals(theWord.trim())) {
+                dictSegment.fillSegment(theWord.trim().toLowerCase().toCharArray());
+            }
+        } while (theWord != null);
+    }
 }
