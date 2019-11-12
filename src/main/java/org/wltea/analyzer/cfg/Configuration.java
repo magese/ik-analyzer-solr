@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.2.0
- * IK Analyzer release 8.2.0
+ * IK 中文分词  版本 8.3.0
+ * IK Analyzer release 8.3.0
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.2.0版本 由 Magese (magese@live.cn) 更新
- * release 8.2.0 update by Magese(magese@live.cn)
+ * 8.3.0版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.0 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.cfg;
@@ -50,6 +50,19 @@ public interface Configuration {
      */
     void setUseSmart(boolean useSmart);
 
+    /**
+     * 获取是否使用主词典
+     *
+     * @return = true 默认加载主词典， = false 不加载主词典
+     */
+    boolean useMainDict();
+
+    /**
+     * 设置是否使用主词典
+     *
+     * @param useMainDic = true 默认加载主词典， = false 不加载主词典
+     */
+    void setUseMainDict(boolean useMainDic);
 
     /**
      * 获取主词典路径

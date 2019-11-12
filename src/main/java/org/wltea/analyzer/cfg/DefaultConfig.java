@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.2.0
- * IK Analyzer release 8.2.0
+ * IK 中文分词  版本 8.3.0
+ * IK Analyzer release 8.3.0
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.2.0版本 由 Magese (magese@live.cn) 更新
- * release 8.2.0 update by Magese(magese@live.cn)
+ * 8.3.0版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.0 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.cfg;
@@ -48,16 +48,20 @@ public class DefaultConfig implements Configuration {
      * 分词器配置文件路径
      */
     private static final String FILE_NAME = "IKAnalyzer.cfg.xml";
+    // 配置属性——是否使用主词典
+    private static final String USE_MAIN = "use_main_dict";
     // 配置属性——扩展字典
     private static final String EXT_DICT = "ext_dict";
     // 配置属性——扩展停止词典
     private static final String EXT_STOP = "ext_stopwords";
 
     private Properties props;
-    /*
-     * 是否使用smart方式分词
-     */
+
+    // 是否使用smart方式分词
     private boolean useSmart;
+
+    // 是否加载主词典
+    private boolean useMainDict = true;
 
     /**
      * 返回单例
@@ -100,8 +104,31 @@ public class DefaultConfig implements Configuration {
      *
      * @param useSmart =true ，分词器使用智能切分策略， =false则使用细粒度切分
      */
+    @Override
     public void setUseSmart(boolean useSmart) {
         this.useSmart = useSmart;
+    }
+
+    /**
+     * 获取是否使用主词典
+     *
+     * @return = true 默认加载主词典， = false 不加载主词典
+     */
+    public boolean useMainDict() {
+        String useMainDictCfg = props.getProperty(USE_MAIN);
+        if (useMainDictCfg != null && useMainDictCfg.trim().length() > 0)
+            setUseMainDict(Boolean.parseBoolean(useMainDictCfg));
+        return useMainDict;
+    }
+
+    /**
+     * 设置是否使用主词典
+     *
+     * @param useMainDict = true 默认加载主词典， = false 不加载主词典
+     */
+    @Override
+    public void setUseMainDict(boolean useMainDict) {
+        this.useMainDict = useMainDict;
     }
 
     /**
@@ -141,7 +168,6 @@ public class DefaultConfig implements Configuration {
         }
         return extDictFiles;
     }
-
 
     /**
      * 获取扩展停止词典配置路径
