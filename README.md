@@ -76,7 +76,15 @@ ik-analyzer for solr 7.x-8.x
 
     ![analyzer](./img/analyzer.png)
 
-5. `ik.conf`文件说明：
+5. `IKAnalyzer.cfg.xml`配置文件说明：
+
+    | 名称 | 类型 | 描述 | 默认 |
+    | :------: | :------: | :------: | :------: |
+    | use_main_dict | boolean | 是否使用默认主词典 | true |
+    | ext_dict | String | 扩展词典文件名称，多个用分号隔开 | ext.dic; |
+    | ext_stopwords | String | 停用词典文件名称，多个用分号隔开 | stopword.dic; |
+
+6. `ik.conf`文件说明：
     ```console
     files=dynamicdic.txt
     lastupdate=0
@@ -85,13 +93,16 @@ ik-analyzer for solr 7.x-8.x
     1. `files`为动态词典列表，可以设置多个词典表，用逗号进行分隔，默认动态词典表为`dynamicdic.txt`；
     2. `lastupdate`默认值为`0`，每次对动态词典表修改后请+1，不然不会将词典表中新的词语添加到内存中。<s>`lastupdate`采用的是`int`类型，不支持时间戳，如果使用时间戳的朋友可以把源码中的`int`改成`long`即可；</s> `2018-08-23` 已将源码中`lastUpdate`改为`long`类型，现可以用时间戳了。
 
-6. `dynamicdic.txt` 为动态词典
+7. `dynamicdic.txt` 为动态词典
 
     在此文件配置的词语不需重启服务即可加载进内存中。
     以`#`开头的词语视为注释，将不会加载到内存中。
 
 
 ## 更新说明
+- `2019-11-12:` 
+    - 升级lucene版本为`8.3.0`
+    - `IKAnalyzer.cfg.xml`增加配置项`use_main_dict`，用于配置是否启用默认主词典
 - `2019-09-27:` 升级lucene版本为`8.2.0`
 - `2019-07-11:` 升级lucene版本为`8.1.1`
 - `2019-05-27:` 
