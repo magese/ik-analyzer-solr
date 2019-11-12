@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.2.0
- * IK Analyzer release 8.2.0
+ * IK 中文分词  版本 8.3.0
+ * IK Analyzer release 8.3.0
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.2.0版本 由 Magese (magese@live.cn) 更新
- * release 8.2.0 update by Magese(magese@live.cn)
+ * 8.3.0版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.0 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.lucene;
@@ -34,44 +34,40 @@ import org.apache.lucene.analysis.Tokenizer;
  * IK分词器，Lucene Analyzer接口实现
  */
 @SuppressWarnings("unused")
-public final class IKAnalyzer extends Analyzer{
-	
-	private boolean useSmart;
-	
-	private boolean useSmart() {
-		return useSmart;
-	}
+public final class IKAnalyzer extends Analyzer {
 
-	public void setUseSmart(boolean useSmart) {
-		this.useSmart = useSmart;
-	}
+    private boolean useSmart;
 
-	/**
-	 * IK分词器Lucene  Analyzer接口实现类
-	 * 
-	 * 默认细粒度切分算法
-	 */
-	public IKAnalyzer(){
-		this(false);
-	}
-	
-	/**
-	 * IK分词器Lucene Analyzer接口实现类
-	 * 
-	 * @param useSmart 当为true时，分词器进行智能切分
-	 */
-	public IKAnalyzer(boolean useSmart){
-		super();
-		this.useSmart = useSmart;
-	}
+    private boolean useSmart() {
+        return useSmart;
+    }
 
-	/**
-	 * 重载Analyzer接口，构造分词组件
-	 */
-	@Override
-	protected TokenStreamComponents createComponents(String fieldName) {
-		Tokenizer _IKTokenizer = new IKTokenizer(this.useSmart());
-		return new TokenStreamComponents(_IKTokenizer);
-	}
+
+    /**
+     * IK分词器Lucene  Analyzer接口实现类
+     * 默认细粒度切分算法
+     */
+    public IKAnalyzer() {
+        this(false);
+    }
+
+    /**
+     * IK分词器Lucene Analyzer接口实现类
+     *
+     * @param useSmart 当为true时，分词器进行智能切分
+     */
+    public IKAnalyzer(boolean useSmart) {
+        super();
+        this.useSmart = useSmart;
+    }
+
+    /**
+     * 重载Analyzer接口，构造分词组件
+     */
+    @Override
+    protected TokenStreamComponents createComponents(String fieldName) {
+        Tokenizer _IKTokenizer = new IKTokenizer(this.useSmart());
+        return new TokenStreamComponents(_IKTokenizer);
+    }
 
 }

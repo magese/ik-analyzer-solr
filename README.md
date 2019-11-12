@@ -30,7 +30,7 @@ ik-analyzer for solr 7.x-8.x
 
 
 ## 使用说明
-* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.2.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.2.0/ik-analyzer-8.2.0.jar)
+* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.3.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.3.0/ik-analyzer-8.3.0.jar)
 * 历史版本：[![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
     ```console
@@ -38,7 +38,7 @@ ik-analyzer for solr 7.x-8.x
     <dependency>
         <groupId>com.github.magese</groupId>
         <artifactId>ik-analyzer</artifactId>
-        <version>8.2.0</version>
+        <version>8.3.0</version>
     </dependency>
     ```
 

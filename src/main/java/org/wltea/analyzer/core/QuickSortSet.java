@@ -1,5 +1,5 @@
 /*
- * IK 中文分词  版本 8.2.0
+ * IK 中文分词  版本 8.3.0
  * IK Analyzer release 8.2.0
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more

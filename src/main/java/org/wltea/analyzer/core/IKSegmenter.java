@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.2.0
- * IK Analyzer release 8.2.0
+ * IK 中文分词  版本 8.3.0
+ * IK Analyzer release 8.3.0
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,20 +21,20 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.2.0版本 由 Magese (magese@live.cn) 更新
- * release 8.2.0 update by Magese(magese@live.cn)
+ * 8.3.0版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.0 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.core;
+
+import org.wltea.analyzer.cfg.Configuration;
+import org.wltea.analyzer.cfg.DefaultConfig;
+import org.wltea.analyzer.dic.Dictionary;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.wltea.analyzer.cfg.Configuration;
-import org.wltea.analyzer.cfg.DefaultConfig;
-import org.wltea.analyzer.dic.Dictionary;
 
 /**
  * IK分词器主类
@@ -58,7 +58,6 @@ public final class IKSegmenter {
      *
      * @param input    读取流
      * @param useSmart 为true，使用智能分词策略
-     *                 <p>
      *                 非智能分词：细粒度输出所有可能的切分结果
      *                 智能分词： 合并数词和量词，对分词结果进行歧义判断
      */
