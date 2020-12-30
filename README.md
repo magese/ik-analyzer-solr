@@ -22,15 +22,16 @@ ik-analyzer for solr 7.x-8.x
 | word | 64.2万 | 2014年 |
 | jieba | 58.4万 | 2012年 |
 | jcesg | 16.6万 | 2018年 |
-| sougou词库 | 115.2万 | 2019年 |
+| sougou词库 | 115.2万 | 2020年 |
 #### 将以上词库进行整理后约187.1万条词汇；
 #### 添加动态加载词典表功能，在不需要重启solr服务的情况下加载新增的词典。
+> <small>关闭默认主词典请在`IKAnalyzer.cfg.xml`配置文件中设置`use_main_dict`为`false`。</small>
 * IKAnalyzer的原作者为林良益<linliangyi2007@gmail.com>，项目网站为<http://code.google.com/p/ik-analyzer>
 * 该项目动态加载功能根据博主[@星火燎原智勇](http://www.cnblogs.com/liang1101/articles/6395016.html)的博客进行修改，其GITHUB地址为[@liang68](https://github.com/liang68)
 
 
 ## 使用说明
-* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.3.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.3.0/ik-analyzer-8.3.0.jar)
+* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.3.1-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.3.1/ik-analyzer-8.3.1.jar)
 * 历史版本：[![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
     ```console
@@ -38,7 +39,7 @@ ik-analyzer for solr 7.x-8.x
     <dependency>
         <groupId>com.github.magese</groupId>
         <artifactId>ik-analyzer</artifactId>
-        <version>8.3.0</version>
+        <version>8.3.1</version>
     </dependency>
     ```
 
@@ -79,7 +80,7 @@ ik-analyzer for solr 7.x-8.x
 5. `IKAnalyzer.cfg.xml`配置文件说明：
 
     | 名称 | 类型 | 描述 | 默认 |
-    | :------: | :------: | :------: | :------: |
+    | ------ | ------ | ------ | ------ |
     | use_main_dict | boolean | 是否使用默认主词典 | true |
     | ext_dict | String | 扩展词典文件名称，多个用分号隔开 | ext.dic; |
     | ext_stopwords | String | 停用词典文件名称，多个用分号隔开 | stopword.dic; |
@@ -100,6 +101,9 @@ ik-analyzer for solr 7.x-8.x
 
 
 ## 更新说明
+- `2020-12-30:`
+    - 升级lucene版本为`8.3.1`
+    - 更新词库
 - `2019-11-12:` 
     - 升级lucene版本为`8.3.0`
     - `IKAnalyzer.cfg.xml`增加配置项`use_main_dict`，用于配置是否启用默认主词典

@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.3.0
- * IK Analyzer release 8.3.0
+ * IK 中文分词  版本 8.3.1
+ * IK Analyzer release 8.3.1
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.3.0版本 由 Magese (magese@live.cn) 更新
- * release 8.3.0 update by Magese(magese@live.cn)
+ * 8.3.1版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.1 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.core;
@@ -32,18 +32,18 @@ package org.wltea.analyzer.core;
  * 字符集识别工具类
  */
 class CharacterUtil {
-	
+
 	static final int CHAR_USELESS = 0;
-	
+
 	static final int CHAR_ARABIC = 0X00000001;
-	
+
 	static final int CHAR_ENGLISH = 0X00000002;
-	
+
 	static final int CHAR_CHINESE = 0X00000004;
-	
+
 	static final int CHAR_OTHER_CJK = 0X00000008;
-	
-	
+
+
 	/**
 	 * 识别字符类型
 	 * @param input 需要识别的字符
@@ -52,23 +52,23 @@ class CharacterUtil {
 	static int identifyCharType(char input){
 		if(input >= '0' && input <= '9'){
 			return CHAR_ARABIC;
-			
+
 		}else if((input >= 'a' && input <= 'z')
 				|| (input >= 'A' && input <= 'Z')){
 			return CHAR_ENGLISH;
-			
+
 		}else {
 			Character.UnicodeBlock ub = Character.UnicodeBlock.of(input);
-			
-			if(ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS  
-					|| ub == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS  
+
+			if(ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+					|| ub == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
 					|| ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A){
 				//目前已知的中文字符UTF-8集合
 				return CHAR_CHINESE;
-				
+
 			}else if(ub == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS //全角数字字符和日韩字符
 					//韩文字符集
-					|| ub == Character.UnicodeBlock.HANGUL_SYLLABLES 
+					|| ub == Character.UnicodeBlock.HANGUL_SYLLABLES
 					|| ub == Character.UnicodeBlock.HANGUL_JAMO
 					|| ub == Character.UnicodeBlock.HANGUL_COMPATIBILITY_JAMO
 					//日文字符集
@@ -76,13 +76,13 @@ class CharacterUtil {
 					|| ub == Character.UnicodeBlock.KATAKANA //片假名
 					|| ub == Character.UnicodeBlock.KATAKANA_PHONETIC_EXTENSIONS){
 				return CHAR_OTHER_CJK;
-				
+
 			}
 		}
 		//其他的不做处理的字符
 		return CHAR_USELESS;
 	}
-	
+
 	/**
 	 * 进行字符规格化（全角转半角，大写转小写处理）
 	 * @param input 需要转换的字符
@@ -91,14 +91,14 @@ class CharacterUtil {
 	static char regularize(char input){
         if (input == 12288) {
             input = (char) 32;
-            
+
         }else if (input > 65280 && input < 65375) {
             input = (char) (input - 65248);
-            
+
         }else if (input >= 'A' && input <= 'Z') {
         	input += 32;
 		}
-        
+
         return input;
 	}
 }

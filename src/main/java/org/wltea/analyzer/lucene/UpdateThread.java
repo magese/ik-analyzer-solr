@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.3.0
- * IK Analyzer release 8.3.0
+ * IK 中文分词  版本 8.3.1
+ * IK Analyzer release 8.3.1
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.3.0版本 由 Magese (magese@live.cn) 更新
- * release 8.3.0 update by Magese(magese@live.cn)
+ * 8.3.1版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.1 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.lucene;
@@ -35,7 +35,7 @@ import java.util.Vector;
  */
 public class UpdateThread implements Runnable {
     private static final long INTERVAL = 30000L;                            // 循环等待时间
-    private Vector<UpdateJob> filterFactorys;                               // 更新任务集合
+    private final Vector<UpdateJob> filterFactorys;                         // 更新任务集合
 
     /**
      * 私有化构造器，阻止外部进行实例化
@@ -51,7 +51,7 @@ public class UpdateThread implements Runnable {
      * 静态内部类，实现线程安全单例模式
      */
     private static class Builder {
-        private static UpdateThread singleton = new UpdateThread();
+        private static final UpdateThread singleton = new UpdateThread();
     }
 
     /**
@@ -81,6 +81,7 @@ public class UpdateThread implements Runnable {
         //noinspection InfiniteLoopStatement
         while (true) {
             try {
+                //noinspection BusyWait
                 Thread.sleep(INTERVAL);
             } catch (InterruptedException e) {
                 e.printStackTrace();

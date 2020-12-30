@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.3.0
- * IK Analyzer release 8.3.0
+ * IK 中文分词  版本 8.3.1
+ * IK Analyzer release 8.3.1
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,22 +21,18 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.3.0版本 由 Magese (magese@live.cn) 更新
- * release 8.3.0 update by Magese(magese@live.cn)
+ * 8.3.1版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.1 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.core;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
-
 import org.wltea.analyzer.cfg.Configuration;
 import org.wltea.analyzer.dic.Dictionary;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.util.*;
 
 /**
  * 分词器上下文状态
@@ -66,17 +62,17 @@ class AnalyzeContext {
 
     //子分词器锁
     //该集合非空，说明有子分词器在占用segmentBuff
-    private Set<String> buffLocker;
+    private final Set<String> buffLocker;
 
     //原始分词结果集合，未经歧义处理
     private QuickSortSet orgLexemes;
     //LexemePath位置索引表
-    private Map<Integer, LexemePath> pathMap;
+    private final Map<Integer, LexemePath> pathMap;
     //最终分词结果集
-    private LinkedList<Lexeme> results;
+    private final LinkedList<Lexeme> results;
 
     //分词器配置项
-    private Configuration cfg;
+    private final Configuration cfg;
 
     AnalyzeContext(Configuration cfg) {
         this.cfg = cfg;
@@ -254,7 +250,7 @@ class AnalyzeContext {
      */
     void outputToResult() {
         int index = 0;
-        for (; index <= this.cursor; ) {
+        while (index <= this.cursor) {
             //跳过非CJK字符
             if (CharacterUtil.CHAR_USELESS == this.charTypes[index]) {
                 index++;
@@ -353,12 +349,14 @@ class AnalyzeContext {
             if (Lexeme.TYPE_ARABIC == result.getLexemeType()) {
                 Lexeme nextLexeme = this.results.peekFirst();
                 boolean appendOk = false;
-                if (Lexeme.TYPE_CNUM == nextLexeme.getLexemeType()) {
-                    //合并英文数词+中文数词
-                    appendOk = result.append(nextLexeme, Lexeme.TYPE_CNUM);
-                } else if (Lexeme.TYPE_COUNT == nextLexeme.getLexemeType()) {
-                    //合并英文数词+中文量词
-                    appendOk = result.append(nextLexeme, Lexeme.TYPE_CQUAN);
+                if (nextLexeme != null) {
+                    if (Lexeme.TYPE_CNUM == nextLexeme.getLexemeType()) {
+                        //合并英文数词+中文数词
+                        appendOk = result.append(nextLexeme, Lexeme.TYPE_CNUM);
+                    } else if (Lexeme.TYPE_COUNT == nextLexeme.getLexemeType()) {
+                        //合并英文数词+中文量词
+                        appendOk = result.append(nextLexeme, Lexeme.TYPE_CQUAN);
+                    }
                 }
                 if (appendOk) {
                     //弹出

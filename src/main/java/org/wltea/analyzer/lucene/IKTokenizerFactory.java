@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.3.0
- * IK Analyzer release 8.3.0
+ * IK 中文分词  版本 8.3.1
+ * IK Analyzer release 8.3.1
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.3.0版本 由 Magese (magese@live.cn) 更新
- * release 8.3.0 update by Magese(magese@live.cn)
+ * 8.3.1版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.1 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.lucene;
@@ -74,7 +74,7 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
      */
     @Override
     public void inform(ResourceLoader resourceLoader) throws IOException {
-        System.out.println(String.format("IKTokenizerFactory " + this.hashCode() + " inform conf: %s", getConf()));
+        System.out.printf("IKTokenizerFactory " + this.hashCode() + " inform conf: %s%n", getConf());
         this.loader = resourceLoader;
         update();
         if ((getConf() != null) && (!getConf().trim().isEmpty())) {

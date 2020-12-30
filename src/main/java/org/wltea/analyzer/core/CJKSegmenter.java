@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.3.0
- * IK Analyzer release 8.3.0
+ * IK 中文分词  版本 8.3.1
+ * IK Analyzer release 8.3.1
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.3.0版本 由 Magese (magese@live.cn) 更新
- * release 8.3.0 update by Magese(magese@live.cn)
+ * 8.3.1版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.1 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.core;
@@ -38,13 +38,13 @@ import org.wltea.analyzer.dic.Hit;
  *  中文-日韩文子分词器
  */
 class CJKSegmenter implements ISegmenter {
-	
+
 	//子分词器标签
 	private static final String SEGMENTER_NAME = "CJK_SEGMENTER";
 	//待处理的分词hit队列
 	private List<Hit> tmpHits;
-	
-	
+
+
 	CJKSegmenter(){
 		this.tmpHits = new LinkedList<>();
 	}
@@ -54,7 +54,7 @@ class CJKSegmenter implements ISegmenter {
 	 */
 	public void analyze(AnalyzeContext context) {
 		if(CharacterUtil.CHAR_USELESS != context.getCurrentCharType()){
-			
+
 			//优先处理tmpHits中的hit
 			if(!this.tmpHits.isEmpty()){
 				//处理词段队列
@@ -65,18 +65,18 @@ class CJKSegmenter implements ISegmenter {
 						//输出当前的词
 						Lexeme newLexeme = new Lexeme(context.getBufferOffset() , hit.getBegin() , context.getCursor() - hit.getBegin() + 1 , Lexeme.TYPE_CNWORD);
 						context.addLexeme(newLexeme);
-						
+
 						if(!hit.isPrefix()){//不是词前缀，hit不需要继续匹配，移除
 							this.tmpHits.remove(hit);
 						}
-						
+
 					}else if(hit.isUnmatch()){
 						//hit不是词，移除
 						this.tmpHits.remove(hit);
-					}					
+					}
 				}
-			}			
-			
+			}
+
 			//*********************************
 			//再对当前指针位置的字符进行单字匹配
 			Hit singleCharHit = Dictionary.getSingleton().matchInMainDict(context.getSegmentBuff(), context.getCursor(), 1);
@@ -94,24 +94,24 @@ class CJKSegmenter implements ISegmenter {
 				//前缀匹配则放入hit列表
 				this.tmpHits.add(singleCharHit);
 			}
-			
+
 
 		}else{
 			//遇到CHAR_USELESS字符
 			//清空队列
 			this.tmpHits.clear();
 		}
-		
+
 		//判断缓冲区是否已经读完
 		if(context.isBufferConsumed()){
 			//清空队列
 			this.tmpHits.clear();
 		}
-		
+
 		//判断是否锁定缓冲区
 		if(this.tmpHits.size() == 0){
 			context.unlockBuffer(SEGMENTER_NAME);
-			
+
 		}else{
 			context.lockBuffer(SEGMENTER_NAME);
 		}

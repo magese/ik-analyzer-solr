@@ -1,6 +1,6 @@
 /*
- * IK 中文分词  版本 8.3.0
- * IK Analyzer release 8.3.0
+ * IK 中文分词  版本 8.3.1
+ * IK Analyzer release 8.3.1
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.3.0版本 由 Magese (magese@live.cn) 更新
- * release 8.3.0 update by Magese(magese@live.cn)
+ * 8.3.1版本 由 Magese (magese@live.cn) 更新
+ * release 8.3.1 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.core;
@@ -36,11 +36,11 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 
+ *
  * 中文数量词子分词器
  */
 class CN_QuantifierSegmenter implements ISegmenter{
-	
+
 	//子分词器标签
 	private static final String SEGMENTER_NAME = "QUAN_SEGMENTER";
 
@@ -54,7 +54,7 @@ class CN_QuantifierSegmenter implements ISegmenter{
 			ChnNumberChars.add(nChar);
 		}
 	}
-	
+
 	/*
 	 * 词元的开始位置，
 	 * 同时作为子分词器状态标识
@@ -69,14 +69,14 @@ class CN_QuantifierSegmenter implements ISegmenter{
 
 	//待处理的量词hit队列
 	private List<Hit> countHits;
-	
-	
+
+
 	CN_QuantifierSegmenter(){
 		nStart = -1;
 		nEnd = -1;
 		this.countHits  = new LinkedList<>();
 	}
-	
+
 	/**
 	 * 分词
 	 */
@@ -85,7 +85,7 @@ class CN_QuantifierSegmenter implements ISegmenter{
 		this.processCNumber(context);
 		//处理中文量词
 		this.processCount(context);
-		
+
 		//判断是否锁定缓冲区
 		if(this.nStart == -1 && this.nEnd == -1	&& countHits.isEmpty()){
 			//对缓冲区解锁
@@ -94,7 +94,7 @@ class CN_QuantifierSegmenter implements ISegmenter{
 			context.lockBuffer(SEGMENTER_NAME);
 		}
 	}
-	
+
 
 	/**
 	 * 重置子分词器状态
@@ -104,20 +104,20 @@ class CN_QuantifierSegmenter implements ISegmenter{
 		nEnd = -1;
 		countHits.clear();
 	}
-	
+
 	/**
 	 * 处理数词
 	 */
 	private void processCNumber(AnalyzeContext context){
 		if(nStart == -1 && nEnd == -1){//初始状态
-			if(CharacterUtil.CHAR_CHINESE == context.getCurrentCharType() 
+			if(CharacterUtil.CHAR_CHINESE == context.getCurrentCharType()
 					&& ChnNumberChars.contains(context.getCurrentChar())){
 				//记录数词的起始、结束位置
 				nStart = context.getCursor();
 				nEnd = context.getCursor();
 			}
 		}else{//正在处理状态
-			if(CharacterUtil.CHAR_CHINESE == context.getCurrentCharType() 
+			if(CharacterUtil.CHAR_CHINESE == context.getCurrentCharType()
 					&& ChnNumberChars.contains(context.getCurrentChar())){
 				//记录数词的结束位置
 				nEnd = context.getCursor();
@@ -129,7 +129,7 @@ class CN_QuantifierSegmenter implements ISegmenter{
 				nEnd = -1;
 			}
 		}
-		
+
 		//缓冲区已经用完，还有尚未输出的数词
 		if(context.isBufferConsumed()){
 			if(nStart != -1 && nEnd != -1){
@@ -139,9 +139,9 @@ class CN_QuantifierSegmenter implements ISegmenter{
 				nStart = -1;
 				nEnd = -1;
 			}
-		}	
+		}
 	}
-	
+
 	/**
 	 * 处理中文量词
 	 * @param context 需要处理的内容
@@ -151,9 +151,9 @@ class CN_QuantifierSegmenter implements ISegmenter{
 		if(!this.needCountScan(context)){
 			return;
 		}
-		
+
 		if(CharacterUtil.CHAR_CHINESE == context.getCurrentCharType()){
-			
+
 			//优先处理countHits中的hit
 			if(!this.countHits.isEmpty()){
 				//处理词段队列
@@ -164,17 +164,17 @@ class CN_QuantifierSegmenter implements ISegmenter{
 						//输出当前的词
 						Lexeme newLexeme = new Lexeme(context.getBufferOffset() , hit.getBegin() , context.getCursor() - hit.getBegin() + 1 , Lexeme.TYPE_COUNT);
 						context.addLexeme(newLexeme);
-						
+
 						if(!hit.isPrefix()){//不是词前缀，hit不需要继续匹配，移除
 							this.countHits.remove(hit);
 						}
-						
+
 					}else if(hit.isUnmatch()){
 						//hit不是词，移除
 						this.countHits.remove(hit);
-					}					
+					}
 				}
-			}				
+			}
 
 			//*********************************
 			//对当前指针位置的字符进行单字匹配
@@ -193,21 +193,21 @@ class CN_QuantifierSegmenter implements ISegmenter{
 				//前缀匹配则放入hit列表
 				this.countHits.add(singleCharHit);
 			}
-			
-			
+
+
 		}else{
 			//输入的不是中文字符
 			//清空未成形的量词
 			this.countHits.clear();
 		}
-		
+
 		//缓冲区数据已经读完，还有尚未输出的量词
 		if(context.isBufferConsumed()){
 			//清空未成形的量词
 			this.countHits.clear();
 		}
 	}
-	
+
 	/**
 	 * 判断是否需要扫描量词
 	 */
@@ -226,7 +226,7 @@ class CN_QuantifierSegmenter implements ISegmenter{
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 添加数词词元到结果集
 	 * @param context 需要添加的词元
