@@ -34,7 +34,7 @@ ik-analyzer for solr 7.x-8.x
 * jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.3.1-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.3.1/ik-analyzer-8.3.1.jar)
 * 历史版本：[![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
-    ```console
+    ```xml
     <!-- Maven仓库地址 -->
     <dependency>
         <groupId>com.github.magese</groupId>
@@ -59,7 +59,7 @@ ik-analyzer for solr 7.x-8.x
     ```
 
 3. 配置Solr的`managed-schema`，添加`ik分词器`，示例如下；
-    ```console
+    ```xml
     <!-- ik分词器 -->
     <fieldType name="text_ik" class="solr.TextField">
       <analyzer type="index">
@@ -86,7 +86,7 @@ ik-analyzer for solr 7.x-8.x
     | ext_stopwords | String | 停用词典文件名称，多个用分号隔开 | stopword.dic; |
 
 6. `ik.conf`文件说明：
-    ```console
+    ```properties
     files=dynamicdic.txt
     lastupdate=0
     ```

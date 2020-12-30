@@ -25,7 +25,7 @@
     ```
 
 4. 配置Solr的`managed-schema`，添加`ik分词器`，示例如下；
-   ```console
+   ```xml
    <!-- ik分词器 -->
    <fieldType name="text_ik" class="solr.TextField">
      <analyzer type="index">
