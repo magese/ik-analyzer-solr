@@ -36,7 +36,7 @@ ik-analyzer for solr 7.x-8.x
 
 
 ## 使用说明
-* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.4.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.4.0/ik-analyzer-8.4.0.jar)
+* jar包下载地址：[![GitHub version](https://img.shields.io/badge/version-8.5.0-519dd9.svg)](https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.5.0/ik-analyzer-8.5.0.jar)
 * 历史版本：[![GitHub version](https://img.shields.io/maven-central/v/com.github.magese/ik-analyzer.svg?style=flat-square)](https://search.maven.org/search?q=g:com.github.magese%20AND%20a:ik-analyzer&core=gav)
 
     ```xml
@@ -44,7 +44,7 @@ ik-analyzer for solr 7.x-8.x
     <dependency>
         <groupId>com.github.magese</groupId>
         <artifactId>ik-analyzer</artifactId>
-        <version>8.4.0</version>
+        <version>8.5.0</version>
     </dependency>
     ```
 
@@ -106,7 +106,7 @@ ik-analyzer for solr 7.x-8.x
 
 
 ## 更新说明
-- **2021-05-26:** 小红牛逼
+- **2021-12-23:** 升级lucene版本为`8.5.0`
 - **2021-03-22:** 升级lucene版本为`8.4.0`
 - **2020-12-30:**
     - 升级lucene版本为`8.3.1`
