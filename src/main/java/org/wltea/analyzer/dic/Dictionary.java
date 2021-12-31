@@ -44,7 +44,7 @@ public class Dictionary {
     /*
      * 词典单子实例
      */
-    private static Dictionary singleton;
+    private static volatile Dictionary singleton;
 
     /*
      * 主词典对象
@@ -63,7 +63,7 @@ public class Dictionary {
     /**
      * 配置对象
      */
-    private Configuration cfg;
+    private final Configuration cfg;
 
     /**
      * 私有构造方法，阻止外部直接实例化本类
