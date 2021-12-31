@@ -43,15 +43,14 @@ class CN_QuantifierSegmenter implements ISegmenter {
     // 子分词器标签
     private static final String SEGMENTER_NAME = "QUAN_SEGMENTER";
 
-    private static Set<Character> ChnNumberChars = new HashSet<>();
+    private static final Set<Character> CHN_NUMBER_CHARS = new HashSet<>();
 
     static {
         // 中文数词
-        // Cnum
         String chn_Num = "一二两三四五六七八九十零壹贰叁肆伍陆柒捌玖拾百千万亿拾佰仟萬億兆卅廿";
         char[] ca = chn_Num.toCharArray();
         for (char nChar : ca) {
-            ChnNumberChars.add(nChar);
+            CHN_NUMBER_CHARS.add(nChar);
         }
     }
 
@@ -68,7 +67,7 @@ class CN_QuantifierSegmenter implements ISegmenter {
     private int nEnd;
 
     // 待处理的量词hit队列
-    private List<Hit> countHits;
+    private final List<Hit> countHits;
 
 
     CN_QuantifierSegmenter() {
@@ -111,14 +110,14 @@ class CN_QuantifierSegmenter implements ISegmenter {
     private void processCNumber(AnalyzeContext context) {
         if (nStart == -1 && nEnd == -1) {// 初始状态
             if (CharacterUtil.CHAR_CHINESE == context.getCurrentCharType()
-                    && ChnNumberChars.contains(context.getCurrentChar())) {
+                    && CHN_NUMBER_CHARS.contains(context.getCurrentChar())) {
                 // 记录数词的起始、结束位置
                 nStart = context.getCursor();
                 nEnd = context.getCursor();
             }
         } else {// 正在处理状态
             if (CharacterUtil.CHAR_CHINESE == context.getCurrentCharType()
-                    && ChnNumberChars.contains(context.getCurrentChar())) {
+                    && CHN_NUMBER_CHARS.contains(context.getCurrentChar())) {
                 // 记录数词的结束位置
                 nEnd = context.getCursor();
             } else {
@@ -180,21 +179,19 @@ class CN_QuantifierSegmenter implements ISegmenter {
             // *********************************
             // 对当前指针位置的字符进行单字匹配
             Hit singleCharHit = Dictionary.getSingleton().matchInQuantifierDict(context.getSegmentBuff(), context.getCursor(), 1);
-            if (singleCharHit.isMatch()) {// 首字成量词词
+
+            // 首字为量词前缀
+            if (singleCharHit.isMatch()) {
                 // 输出当前的词
                 Lexeme newLexeme = new Lexeme(context.getBufferOffset(), context.getCursor(), 1, Lexeme.TYPE_COUNT);
                 context.addLexeme(newLexeme);
+            }
 
-                // 同时也是词前缀
-                if (singleCharHit.isPrefix()) {
-                    // 前缀匹配则放入hit列表
-                    this.countHits.add(singleCharHit);
-                }
-            } else if (singleCharHit.isPrefix()) {// 首字为量词前缀
+            // 前缀匹配则放入hit列表
+            if (singleCharHit.isPrefix()) {
                 // 前缀匹配则放入hit列表
                 this.countHits.add(singleCharHit);
             }
-
 
         } else {
             // 输入的不是中文字符
