@@ -41,15 +41,25 @@ import java.util.List;
  */
 public final class IKSegmenter {
 
-    // 字符窜reader
+    /**
+     * 字符窜reader
+     */
     private Reader input;
-    // 分词器配置项
-    private Configuration cfg;
-    // 分词器上下文
+    /**
+     * 分词器配置项
+     */
+    private final Configuration cfg;
+    /**
+     * 分词器上下文
+     */
     private AnalyzeContext context;
-    // 分词处理器列表
+    /**
+     * 分词处理器列表
+     */
     private List<ISegmenter> segmenters;
-    // 分词歧义裁决器
+    /**
+     * 分词歧义裁决器
+     */
     private IKArbitrator arbitrator;
 
 
