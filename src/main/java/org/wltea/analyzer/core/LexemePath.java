@@ -34,11 +34,17 @@ package org.wltea.analyzer.core;
 @SuppressWarnings("unused")
 class LexemePath extends QuickSortSet implements Comparable<LexemePath> {
 
-    //起始位置
+    /**
+     * 起始位置
+     */
     private int pathBegin;
-    //结束
+    /**
+     * 结束
+     */
     private int pathEnd;
-    //词元链的有效字符长度
+    /**
+     * 词元链的有效字符长度
+     */
     private int payloadLength;
 
     LexemePath() {
@@ -100,7 +106,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath> {
 
     /**
      * 移除尾部的Lexeme
-     *
      */
     void removeTail() {
         Lexeme tail = this.pollLast();
@@ -117,7 +122,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath> {
 
     /**
      * 检测词元位置交叉（有歧义的切分）
-     *
      */
     boolean checkCross(Lexeme lexeme) {
         return (lexeme.getBegin() >= this.pathBegin && lexeme.getBegin() < this.pathEnd)
@@ -141,7 +145,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath> {
 
     /**
      * 获取LexemePath的路径长度
-     *
      */
     private int getPathLength() {
         return this.pathEnd - this.pathBegin;
@@ -150,7 +153,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath> {
 
     /**
      * X权重（词元长度积）
-     *
      */
     private int getXWeight() {
         int product = 1;
@@ -191,48 +193,48 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath> {
     }
 
     public int compareTo(LexemePath o) {
-        //比较有效文本长度
+        // 比较有效文本长度
         if (this.payloadLength > o.payloadLength) {
             return -1;
         } else if (this.payloadLength < o.payloadLength) {
             return 1;
-        } else {
-            //比较词元个数，越少越好
-            if (this.size() < o.size()) {
-                return -1;
-            } else if (this.size() > o.size()) {
-                return 1;
-            } else {
-                //路径跨度越大越好
-                if (this.getPathLength() > o.getPathLength()) {
-                    return -1;
-                } else if (this.getPathLength() < o.getPathLength()) {
-                    return 1;
-                } else {
-                    //根据统计学结论，逆向切分概率高于正向切分，因此位置越靠后的优先
-                    if (this.pathEnd > o.pathEnd) {
-                        return -1;
-                    } else if (pathEnd < o.pathEnd) {
-                        return 1;
-                    } else {
-                        //词长越平均越好
-                        if (this.getXWeight() > o.getXWeight()) {
-                            return -1;
-                        } else if (this.getXWeight() < o.getXWeight()) {
-                            return 1;
-                        } else {
-                            //词元位置权重比较
-                            if (this.getPWeight() > o.getPWeight()) {
-                                return -1;
-                            } else if (this.getPWeight() < o.getPWeight()) {
-                                return 1;
-                            }
-
-                        }
-                    }
-                }
-            }
         }
+
+        // 比较词元个数，越少越好
+        if (this.size() < o.size()) {
+            return -1;
+        } else if (this.size() > o.size()) {
+            return 1;
+        }
+
+        // 路径跨度越大越好
+        if (this.getPathLength() > o.getPathLength()) {
+            return -1;
+        } else if (this.getPathLength() < o.getPathLength()) {
+            return 1;
+        }
+
+        // 根据统计学结论，逆向切分概率高于正向切分，因此位置越靠后的优先
+        if (this.pathEnd > o.pathEnd) {
+            return -1;
+        } else if (pathEnd < o.pathEnd) {
+            return 1;
+        }
+
+        // 词长越平均越好
+        if (this.getXWeight() > o.getXWeight()) {
+            return -1;
+        } else if (this.getXWeight() < o.getXWeight()) {
+            return 1;
+        }
+
+        // 词元位置权重比较
+        if (this.getPWeight() > o.getPWeight()) {
+            return -1;
+        } else if (this.getPWeight() < o.getPWeight()) {
+            return 1;
+        }
+
         return 0;
     }
 
