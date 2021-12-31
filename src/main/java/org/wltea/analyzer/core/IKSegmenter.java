@@ -41,15 +41,15 @@ import java.util.List;
  */
 public final class IKSegmenter {
 
-    //字符窜reader
+    // 字符窜reader
     private Reader input;
-    //分词器配置项
+    // 分词器配置项
     private Configuration cfg;
-    //分词器上下文
+    // 分词器上下文
     private AnalyzeContext context;
-    //分词处理器列表
+    // 分词处理器列表
     private List<ISegmenter> segmenters;
-    //分词歧义裁决器
+    // 分词歧义裁决器
     private IKArbitrator arbitrator;
 
 
@@ -85,13 +85,13 @@ public final class IKSegmenter {
      * 初始化
      */
     private void init() {
-        //初始化词典单例
+        // 初始化词典单例
         Dictionary.initial(this.cfg);
-        //初始化分词上下文
+        // 初始化分词上下文
         this.context = new AnalyzeContext(this.cfg);
-        //加载子分词器
+        // 加载子分词器
         this.segmenters = this.loadSegmenters();
-        //加载歧义裁决器
+        // 加载歧义裁决器
         this.arbitrator = new IKArbitrator();
     }
 
@@ -102,11 +102,11 @@ public final class IKSegmenter {
      */
     private List<ISegmenter> loadSegmenters() {
         List<ISegmenter> segmenters = new ArrayList<>(4);
-        //处理字母的子分词器
+        // 处理字母的子分词器
         segmenters.add(new LetterSegmenter());
-        //处理中文数量词的子分词器
+        // 处理中文数量词的子分词器
         segmenters.add(new CN_QuantifierSegmenter());
-        //处理中文词的子分词器
+        // 处理中文词的子分词器
         segmenters.add(new CJKSegmenter());
         return segmenters;
     }
@@ -126,34 +126,34 @@ public final class IKSegmenter {
              */
             int available = context.fillBuffer(this.input);
             if (available <= 0) {
-                //reader已经读完
+                // reader已经读完
                 context.reset();
                 return null;
 
             } else {
-                //初始化指针
+                // 初始化指针
                 context.initCursor();
                 do {
-                    //遍历子分词器
+                    // 遍历子分词器
                     for (ISegmenter segmenter : segmenters) {
                         segmenter.analyze(context);
                     }
-                    //字符缓冲区接近读完，需要读入新的字符
+                    // 字符缓冲区接近读完，需要读入新的字符
                     if (context.needRefillBuffer()) {
                         break;
                     }
-                    //向前移动指针
+                    // 向前移动指针
                 } while (context.moveCursor());
-                //重置子分词器，为下轮循环进行初始化
+                // 重置子分词器，为下轮循环进行初始化
                 for (ISegmenter segmenter : segmenters) {
                     segmenter.reset();
                 }
             }
-            //对分词进行歧义处理
+            // 对分词进行歧义处理
             this.arbitrator.process(context, this.cfg.useSmart());
-            //将分词结果输出到结果集，并处理未切分的单个CJK字符
+            // 将分词结果输出到结果集，并处理未切分的单个CJK字符
             context.outputToResult();
-            //记录本次分词的缓冲区位移
+            // 记录本次分词的缓冲区位移
             context.markBufferOffset();
         }
         return l;
