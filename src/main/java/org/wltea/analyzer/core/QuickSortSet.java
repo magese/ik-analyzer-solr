@@ -28,14 +28,20 @@
 package org.wltea.analyzer.core;
 
 /**
- * IK分词器专用的Lexem快速排序集合
+ * IK分词器专用的Lexeme快速排序集合
  */
 class QuickSortSet {
-    //链表头
+    /**
+     * 链表头
+     */
     private Cell head;
-    //链表尾
+    /**
+     * 链表尾
+     */
     private Cell tail;
-    //链表的实际大小
+    /**
+     * 链表的实际大小
+     */
     private int size;
 
     QuickSortSet() {
@@ -53,31 +59,29 @@ class QuickSortSet {
             this.size++;
 
         } else {
-			/*if(this.tail.compareTo(newCell) == 0){//词元与尾部词元相同，不放入集合
-
-			}else */
-            if (this.tail.compareTo(newCell) < 0) {//词元接入链表尾部
+            if (this.tail.compareTo(newCell) < 0) {
+                // 词元接入链表尾部
                 this.tail.next = newCell;
                 newCell.prev = this.tail;
                 this.tail = newCell;
                 this.size++;
 
-            } else if (this.head.compareTo(newCell) > 0) {//词元接入链表头部
+            } else if (this.head.compareTo(newCell) > 0) {
+                // 词元接入链表头部
                 this.head.prev = newCell;
                 newCell.next = this.head;
                 this.head = newCell;
                 this.size++;
 
             } else {
-                //从尾部上逆
+                // 从尾部上逆
                 Cell index = this.tail;
                 while (index != null && index.compareTo(newCell) > 0) {
                     index = index.prev;
                 }
-				/*if(index.compareTo(newCell) == 0){//词元与集合中的词元重复，不放入集合
 
-				}else */
-                if ((index != null ? index.compareTo(newCell) : 1) < 0) {//词元插入链表中的某个位置
+                // 词元插入链表中的某个位置
+                if ((index != null ? index.compareTo(newCell) : 1) < 0) {
                     newCell.prev = index;
                     newCell.next = index.next;
                     index.next.prev = newCell;
