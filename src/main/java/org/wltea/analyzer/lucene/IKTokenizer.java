@@ -39,21 +39,30 @@ import java.io.IOException;
 
 /**
  * IK分词器 Lucene Tokenizer适配器类
- * 兼容Lucene 4.0版本
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "FinalMethodInFinalClass"})
 public final class IKTokenizer extends Tokenizer {
 
-    //IK分词器实现
+    /**
+     * IK分词器实现
+     */
     private IKSegmenter _IKImplement;
 
-    //词元文本属性
+    /**
+     * 词元文本属性
+     */
     private CharTermAttribute termAtt;
-    //词元位移属性
+    /**
+     * 词元位移属性
+     */
     private OffsetAttribute offsetAtt;
-    //词元分类属性（该属性分类参考org.wltea.analyzer.core.Lexeme中的分类常量）
+    /**
+     * 词元分类属性（该属性分类参考org.wltea.analyzer.core.Lexeme中的分类常量）
+     */
     private TypeAttribute typeAtt;
-    //记录最后一个词元的结束位置
+    /**
+     * 记录最后一个词元的结束位置
+     */
     private int endPosition;
 
     /**
@@ -84,30 +93,31 @@ public final class IKTokenizer extends Tokenizer {
         _IKImplement = new IKSegmenter(input, useSmart);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.apache.lucene.analysis.TokenStream#incrementToken()
      */
     @Override
     public boolean incrementToken() throws IOException {
-        //清除所有的词元属性
+        // 清除所有的词元属性
         clearAttributes();
         Lexeme nextLexeme = _IKImplement.next();
         if (nextLexeme != null) {
-            //将Lexeme转成Attributes
-            //设置词元文本
+            // 将Lexeme转成Attributes
+            // 设置词元文本
             termAtt.append(nextLexeme.getLexemeText());
-            //设置词元长度
+            // 设置词元长度
             termAtt.setLength(nextLexeme.getLength());
-            //设置词元位移
+            // 设置词元位移
             offsetAtt.setOffset(nextLexeme.getBeginPosition(), nextLexeme.getEndPosition());
-            //记录分词的最后位置
+            // 记录分词的最后位置
             endPosition = nextLexeme.getEndPosition();
-            //记录词元分类
+            // 记录词元分类
             typeAtt.setType(nextLexeme.getLexemeTypeString());
-            //返会true告知还有下个词元
+            // 返会true告知还有下个词元
             return true;
         }
-        //返会false告知词元输出完毕
+        // 返会false告知词元输出完毕
         return false;
     }
 
