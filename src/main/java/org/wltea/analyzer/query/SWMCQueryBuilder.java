@@ -45,6 +45,7 @@ import java.util.List;
  *
  * @author linliangyi
  */
+@SuppressWarnings("unused")
 class SWMCQueryBuilder {
 
     /**
@@ -56,9 +57,9 @@ class SWMCQueryBuilder {
         if (fieldName == null || keywords == null) {
             throw new IllegalArgumentException("参数 fieldName 、 keywords 不能为null.");
         }
-        //1.对keywords进行分词处理
+        // 1.对keywords进行分词处理
         List<Lexeme> lexemes = doAnalyze(keywords);
-        //2.根据分词结果，生成SWMCQuery
+        // 2.根据分词结果，生成SWMCQuery
         return getSWMCQuery(fieldName, lexemes);
     }
 
@@ -84,20 +85,20 @@ class SWMCQueryBuilder {
      * 根据分词结果生成SWMC搜索
      */
     private static Query getSWMCQuery(String fieldName, List<Lexeme> lexemes) {
-        //构造SWMC的查询表达式
+        // 构造SWMC的查询表达式
         StringBuilder keywordBuffer = new StringBuilder();
-        //精简的SWMC的查询表达式
+        // 精简的SWMC的查询表达式
         StringBuilder keywordBuffer_Short = new StringBuilder();
-        //记录最后词元长度
+        // 记录最后词元长度
         int lastLexemeLength = 0;
-        //记录最后词元结束位置
+        // 记录最后词元结束位置
         int lastLexemeEnd = -1;
 
         int shortCount = 0;
         int totalCount = 0;
         for (Lexeme l : lexemes) {
             totalCount += l.getLength();
-            //精简表达式
+            // 精简表达式
             if (l.getLength() > 1) {
                 keywordBuffer_Short.append(' ').append(l.getLexemeText());
                 shortCount += l.getLength();
@@ -106,7 +107,7 @@ class SWMCQueryBuilder {
             if (lastLexemeLength == 0) {
                 keywordBuffer.append(l.getLexemeText());
             } else if (lastLexemeLength == 1 && l.getLength() == 1
-                    && lastLexemeEnd == l.getBeginPosition()) {//单字位置相邻，长度为一，合并)
+                    && lastLexemeEnd == l.getBeginPosition()) {// 单字位置相邻，长度为一，合并)
                 keywordBuffer.append(l.getLexemeText());
             } else {
                 keywordBuffer.append(' ').append(l.getLexemeText());
@@ -116,10 +117,10 @@ class SWMCQueryBuilder {
             lastLexemeEnd = l.getEndPosition();
         }
 
-        //借助lucene queryparser 生成SWMC Query
+        // 借助lucene queryparser 生成SWMC Query
         QueryParser qp = new QueryParser(fieldName, new StandardAnalyzer());
+        qp.setAutoGeneratePhraseQueries(false);
         qp.setDefaultOperator(QueryParser.AND_OPERATOR);
-        qp.setAutoGeneratePhraseQueries(true);
 
         if ((shortCount * 1.0f / totalCount) > 0.5f) {
             try {
