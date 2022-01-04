@@ -21,8 +21,8 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  *
- * 8.3.1版本 由 Magese (magese@live.cn) 更新
- * release 8.3.1 update by Magese(magese@live.cn)
+ * 8.5.0版本 由 Magese (magese@live.cn) 更新
+ * release 8.5.0 update by Magese(magese@live.cn)
  *
  */
 package org.wltea.analyzer.lucene;
@@ -44,6 +44,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
+ * 分词器工厂类
+ *
  * @author <a href="magese@live.cn">Magese</a>
  */
 public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoaderAware, UpdateThread.UpdateJob {
