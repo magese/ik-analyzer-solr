@@ -37,24 +37,38 @@ import java.util.Map;
 @SuppressWarnings("unused")
 class DictSegment implements Comparable<DictSegment> {
 
-    //公用字典表，存储汉字
+    /**
+     * 公用字典表，存储汉字
+     */
     private static final Map<Character, Character> charMap = new HashMap<>(16, 0.95f);
-    //数组大小上限
+    /**
+     * 数组大小上限
+     */
     private static final int ARRAY_LENGTH_LIMIT = 3;
 
 
-    //Map存储结构
-    private Map<Character, DictSegment> childrenMap;
-    //数组方式存储结构
-    private DictSegment[] childrenArray;
+    /**
+     * Map存储结构
+     */
+    private volatile Map<Character, DictSegment> childrenMap;
+    /**
+     * 数组方式存储结构
+     */
+    private volatile DictSegment[] childrenArray;
 
 
-    //当前节点上存储的字符
-    private Character nodeChar;
-    //当前节点存储的Segment数目
-    //storeSize <=ARRAY_LENGTH_LIMIT ，使用数组存储， storeSize >ARRAY_LENGTH_LIMIT ,则使用Map存储
+    /**
+     * 当前节点上存储的字符
+     */
+    private final Character nodeChar;
+    /**
+     * 当前节点存储的Segment数目
+     * storeSize <=ARRAY_LENGTH_LIMIT ，使用数组存储， storeSize >ARRAY_LENGTH_LIMIT ,则使用Map存储
+     */
     private int storeSize = 0;
-    //当前DictSegment状态 ,默认 0 , 1表示从根节点到当前节点的路径表示一个词
+    /**
+     * 当前DictSegment状态 ,默认 0 , 1表示从根节点到当前节点的路径表示一个词
+     */
     private int nodeState = 0;
 
 
