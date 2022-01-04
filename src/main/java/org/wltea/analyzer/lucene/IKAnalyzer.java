@@ -36,7 +36,7 @@ import org.apache.lucene.analysis.Tokenizer;
 @SuppressWarnings("unused")
 public final class IKAnalyzer extends Analyzer {
 
-    private boolean useSmart;
+    private final boolean useSmart;
 
     private boolean useSmart() {
         return useSmart;
