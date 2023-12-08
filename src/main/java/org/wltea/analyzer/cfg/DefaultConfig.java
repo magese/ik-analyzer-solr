@@ -41,7 +41,7 @@ public class DefaultConfig implements Configuration {
     /*
      * 分词器默认字典路径
      */
-    private static final String PATH_DIC_MAIN = "dict/main_dic_2020.dic";
+    private static final String PATH_DIC_MAIN = "dict/main_dic_2020_t.dic";
     private static final String PATH_DIC_QUANTIFIER = "dict/quantifier.dic";
 
     /*
