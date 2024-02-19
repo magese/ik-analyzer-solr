@@ -127,7 +127,7 @@ public class IKTokenizerFactory extends TokenizerFactory implements ResourceLoad
             p.load(confStream);                                             // 读取配置文件
             confStream.close();                                             // 关闭文件流
             String lastupdate = p.getProperty("lastupdate", "0");           // 获取最后更新数字
-            Long t = new Long(lastupdate);
+            Long t = Long.parseLong(lastupdate);
 
             if (t > this.lastUpdateTime) {                                  // 如果最后更新的数字大于上次记录的最后更新数字
                 this.lastUpdateTime = t;                                    // 将最后更新数字替换为当次的数字
